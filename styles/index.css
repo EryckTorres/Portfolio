@@ -22,6 +22,16 @@
         -1px 1px 0 var(--preto),
         0 1px 0 var(--preto),
         1px 1px 0 var(--preto);
+
+    --borda-texto-branco:
+        -2px -2px 0 var(--branco),
+        0 -2px 0 var(--branco),
+        2px -2px 0 var(--branco),
+        -2px 0 0 var(--branco),
+        2px 0 0 var(--branco),
+        -2px 2px 0 var(--branco),
+        0 2px 0 var(--branco),
+        2px 2px 0 var(--branco);
 }
 
 .body {
@@ -137,9 +147,9 @@
 
 .container {
     margin-left: 7%;
-  width: 650px;
-  height: 650px;
-  position: relative;
+    width: 650px;
+    height: 650px;
+    position: relative;
 }
 
 .text {
@@ -161,9 +171,8 @@
   }
 }
 
-
 .about-text{
-    margin: 10%;
+    margin: 3% 10% 0% 10%;
 }
 
 .about-titulo{
@@ -181,6 +190,67 @@
     font-weight: 200;
     font-size: 24px;
 }
+
+.skills{
+    margin-top: 7%;
+    height: 850px;
+    background-color: var(--preto);
+}
+
+.skills-title{
+    padding-top: 8%;
+    margin-left:7%;
+    font-family: var(--fonte-destaque);
+    font-weight: 900;
+    font-size: 72px;
+    color: var(--preto);
+    text-shadow: var(--borda-texto-branco);
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 48px;
+    margin: 3% 7% 0% 7%;
+    border: 1px dashed red;
+}
+
+.skills-container div {
+    flex: 0 0 calc(20% - 48px); /* 20% da largura, subtraindo o gap */
+    height: 200px;
+    border-radius: 20px;
+    border: 3px solid var(--branco);
+    background-color: var(--preto);
+
+}
+
+.skills-container-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.skills-name{
+    font-family: var(--fonte-principal);
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--branco);
+}
+
+.borda-decorativa {
+    margin-top: -5px;
+    width: 100%;
+    height: 10px;
+    background-image: url(../assets/images/TRI_BORDER.svg);
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-size: 300px 100%;
+    padding-bottom: 70px;
+}
+
 
 /* Rodapé */
 .rodape {
