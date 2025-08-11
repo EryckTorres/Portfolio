@@ -71,6 +71,7 @@
     padding: 15px 40px;
 
     z-index: 1000;
+    transition: opacity 0.3s ease;
 }
 
 /* Depois colocar hover de opacidade! */
@@ -84,12 +85,18 @@
     border: 7px solid var(--preto);
     object-fit: cover;
     z-index: 1001;
+    transition: opacity 0.3s ease;
 }
 
 .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+.header.scrolled {
+    opacity: 0.2;
 }
 
 .nav-list {
@@ -108,6 +115,17 @@
 }
 
 /* Efeito hover */
+
+.nav:hover {
+    opacity: 1 !important;
+}
+.flag-icon:hover {
+    opacity: 1 !important;
+}
+.header:hover {
+    opacity: 1 !important;
+}
+
 .nav-list a:hover {
     color: #ffffff; /* cor ao passar o mouse */
     transform: scale(1.1);
@@ -276,31 +294,55 @@ html {
     justify-content: center;
     gap: 48px;
     margin: 3% 7% 0% 7%;
-    /* border: 1px dashed red; */
 }
 
 .skills-container div {
-    flex: 0 0 calc(20% - 48px); /* 20% da largura, subtraindo o gap */
+    flex: 0 0 calc(20% - 48px);
     height: 200px;
     border-radius: 20px;
     border: 3px solid var(--branco);
     background-color: var(--preto);
-
 }
 
-.skills-container-content{
+.skills-container-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 20px;
-}
-
-.skills-name{
     font-family: var(--fonte-principal);
     font-weight: 400;
     font-size: 24px;
     color: var(--branco);
+    transition: 0.2s ease-in-out;
+    position: relative;
+}
+
+.skills-container-content img {
+    transition: filter 0.3s ease-in-out;
+}
+
+.skills-container-content img.original {
+    display: block;
+}
+
+.skills-container-content img.new {
+    display: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.skills-container-content:hover img.original {
+    display: none;
+}
+
+.skills-container-content:hover img.new {
+    display: block;
+}
+
+.skills-container-content:hover {
+    background-color: var(--branco);
+    color: var(--preto);
+    scale: 1.05;
 }
 
 .borda-decorativa {
@@ -311,7 +353,6 @@ html {
     background-position: 0 bottom;
     background-size: 260px 100%;
 
-        /* Animação */
     animation: move-border 5s linear infinite;
 }
 
@@ -320,7 +361,7 @@ html {
         background-position-x: 0;
     }
     to {
-        background-position-x: -260px; /* mesmo valor do background-size horizontal */
+        background-position-x: -260px;
     }
 }
 
@@ -395,6 +436,10 @@ html {
     padding-bottom: 32px;
 }
 
+.projects-dev-text:hover img{
+    scale: 1.1;
+}
+
 .projects-dev-subtitle{
     font-family: var(--fonte-principal);
     font-weight: 900;
@@ -417,64 +462,86 @@ html {
     padding-bottom: 10%;
 }
 
-.container-group-1{
-    display: flex;
-    gap: 10px;
-    padding-bottom: 10px;
+.bt-seta{
+    height: 60px;
+    padding: 10px;
+    transition: scale 0.8 ease;
 }
 
-.container-group-2{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
+.bt-seta:hover{
+    scale: 1.1;
 }
 
-.container-bottom{
+.bt-see-more {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 10px 10px 0px;
+
+    width: 40px;
+    height: 120px;
+    border-radius: 5px;
+    background: var(--branco);
+    text-decoration: none;
 }
 
-.container-base {
+.bt-content {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transform: rotate(-90deg);
+    font-family: var(--fonte-principal);
+    font-weight: 300;
+    font-size: calc(40px * 0.40);
+    color: var(--preto);
+    white-space: nowrap; /* impede quebra */
+}
+
+.bt-content img {
+    height: 1em;
+    width: auto;
+}
+
+.bt-see-more:hover{
+    background: white;
+}
+
+.box{
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
     background-color: var(--preto);
     border-radius: 10px;
+    transition: scale 0.8 ease;
 }
 
-.c1{
-    height: 17.5rem; width: 17.5rem;
+.grid-container{
+    display: grid;
+    grid-template-columns: 140px 140px 140px 140px 140px 140px 140px 140px;
+    grid-template-rows: 140px 140px 140px 140px;
+    gap: 10px;
+    grid-template-areas:
+    'box-1 box-1 box-2 box-2 box-2 box-2 box-3 box-3'
+    'box-1 box-1 box-2 box-2 box-2 box-2 box-3 box-3'
+    'box-4 box-4 box-5 box-5 box-6 box-6 box-7 box-7'
+    'box-4 box-4 box-5 box-5 box-8 box-8 box-9 box-9';
+    
 }
 
-.c2{
-    height: 17.5rem; width: 35rem;
+.grid-container2{
+    display: grid;
+    grid-template-columns: 140px 140px 140px 140px 140px 140px 140px 140px;
+    grid-template-rows: 140px 140px 140px 140px;
+    gap: 10px;
+    grid-template-areas:
+    'box-1 box-1 box-2 box-2 box-3 box-3 box-4 box-4'
+    'box-1 box-1 box-2 box-2 box-3 box-3 box-4 box-4'
+    'box-5 box-5 box-6 box-6 box-3 box-3 box-8 box-8'
+    'box-5 box-5 box-6 box-6 box-7 box-7 box-8 box-8';
 }
 
-.c3{
-    height: 17.5rem; width: 23.438rem;
-}
-
-.c4{
-    height: 20.313rem; width: 19.375rem;
-}
-
-.c5{
-    height: 20.313rem; width: 17.5rem;
-}
-
-.c6{
-    height: 9.844rem; width: 15rem;
-}
-
-.c7{
-    height: 9.844rem; width: 15rem;
-}
-
-.c8{
-    height: 9.844rem; width: 23.438rem;
-}
-
-.c9{
-    height: 9.844rem; width: 23.438rem;
+.box:hover{
+    scale: 1.02;
 }
 
 .contact{
@@ -482,7 +549,7 @@ html {
 }
 
 .contact-content{
-    padding-top: 10%;
+    padding-top: 7%;
     margin-left: 7%;
     margin-right: 7%;
 }
@@ -522,34 +589,40 @@ html {
   font-family: var(--fonte-principal);
   font-weight: 300;
   font-size: 20px;
-  border-radius: 4px;
+  border-radius: 5px;
   outline: none;
 }
 
 .contact-form textarea {
   resize: none;
-  height: 100px;
+  height: 170px;
 }
 
 .form-buttons {
   display: flex;
-  gap: 5px;
+  gap: 15px;
 }
 
-.form-buttons button {
-  background: var(--branco);
-  border: none;
-  padding: 10px;
-  font-family: var(--fonte-principal);
-  font-size: 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  flex: 1;
-  transition: background 0.3s ease;
+.form-buttons button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--branco);
+    border: none;
+    padding: 10px;
+    font-family: var(--fonte-principal);
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
 .form-buttons button:hover {
   background: white;
+}
+
+.flex{
+    width: 200px;
 }
 
 /* Rodapé */
