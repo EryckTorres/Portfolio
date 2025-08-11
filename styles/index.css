@@ -74,7 +74,6 @@
     transition: opacity 0.3s ease;
 }
 
-/* Depois colocar hover de opacidade! */
 .flag-icon { 
     position: fixed;
     top: 5%;
@@ -512,7 +511,11 @@ html {
     justify-content: end;
     background-color: var(--preto);
     border-radius: 10px;
-    transition: scale 0.8 ease;
+    transition: transform 0.3s ease-in-out;
+}
+
+.box:hover{
+    transform: scale(1.02);
 }
 
 .grid-container{
@@ -538,10 +541,6 @@ html {
     'box-1 box-1 box-2 box-2 box-3 box-3 box-4 box-4'
     'box-5 box-5 box-6 box-6 box-3 box-3 box-8 box-8'
     'box-5 box-5 box-6 box-6 box-7 box-7 box-8 box-8';
-}
-
-.box:hover{
-    scale: 1.02;
 }
 
 .contact{
