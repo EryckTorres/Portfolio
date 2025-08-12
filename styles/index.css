@@ -159,8 +159,6 @@
     text-decoration: none;
 }
 
-/* Efeito hover */
-
 .nav:hover {
     opacity: 1 !important;
 }
@@ -229,6 +227,14 @@ html {
     justify-content: space-between;
     padding-top: 10px;
     padding-bottom: 100px;
+}
+
+.titulo-icons-img{
+    transition: transform 0.2s ease-in-out;
+}
+
+.titulo-icons-img:hover{
+    transform: scale(1.2);
 }
 
 .carrousel-divisory {
@@ -488,6 +494,23 @@ html {
     color: var(--preto);
     font-size: 36px;
     padding-bottom: 12px;
+}
+
+.projects-dev-demo,
+.projects-dev-text {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.slide-out-left {
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.slide-out-right {
+    opacity: 0;
+    transform: translateX(50px);
 }
 
 .projects-design{
