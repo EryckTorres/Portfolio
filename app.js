@@ -1,14 +1,47 @@
+// Animação de Intro
+
+let intro = document.querySelector('.intro');
+let logo = document.querySelector('.logo-header');
+let logoSpan = document.querySelectorAll('.logo');
+
+window.addEventListener('DOMContentLoaded', () => {
+
+    setTimeout(() =>{
+
+        logoSpan.forEach((span, idx) => {
+            setTimeout(()=>{
+                span.classList.add('active');
+            }, (idx + 1) * 400)
+        });
+        
+        setTimeout(() =>{
+            logoSpan.forEach((span, idx) => {
+
+                setTimeout(()=>{
+                    span.classList.remove('active');
+                    span.classList.add('fade');
+                }, (idx + 1) * 50)
+            })
+        },2000);
+
+        setTimeout(()=>{
+            intro.style.top = '-100vh';
+        }, 2300)
+    })
+})
+
 // Detecta o scroll da página
 window.addEventListener('scroll', function() {
     const header = document.querySelector('.header');
     
-    // Se o scroll for maior que 100px, a navegação e a flag icon perdem opacidade
     if (window.scrollY > 100) {
         header.classList.add('scrolled');
     } else {
         header.classList.remove('scrolled');
     }
 });
+
+// LightBox
 
 const images = document.querySelectorAll('.grid-container2 img');
 const lightbox = document.getElementById('lightbox');
@@ -56,6 +89,8 @@ nextBtn.addEventListener('click', (e) => {
     currentIndex = (currentIndex + 1) % images.length;
     showImage(currentIndex);
 });
+
+// Carrossel de Projetos
 
 const projetos = [
     {
@@ -121,5 +156,7 @@ document.querySelectorAll(".bt-seta")[1].addEventListener("click", () => {
 });
 
 atualizarProjeto();
+
+// Pra dar sorte :3
 
 console.log('olá mundo!');

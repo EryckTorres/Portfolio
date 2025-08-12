@@ -61,6 +61,45 @@
     background-color: var(--branco);
 }
 
+.intro{
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--preto);
+    transition: 1s;
+}
+
+.logo-header{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--fonte-destaque);
+    color: var(--branco);
+}
+
+.logo{
+    position: relative;
+    display: inline-block;
+    bottom: -20px;
+    opacity: 0;
+}
+
+.logo.active{
+    bottom: 0;
+    opacity: 1;
+    transition: ease-in-out 0.5s;
+}
+
+.logo.fade{
+    bottom: 150px;
+    opacity: 0;
+    transition: ease-in-out 0.5s;
+}
+
 /* .loading-screen{
     width: 100%;
     min-height: 100vh;
@@ -112,7 +151,7 @@
 .header {
     position: fixed;
     top: 5%;
-    right: 7%;
+    right: 12%;
     background: var(--preto);
     border-radius: 50px;
     padding: 15px 40px;
