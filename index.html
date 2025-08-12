@@ -6,6 +6,7 @@
     <title>Portfolio</title>
     <link rel="stylesheet" href="./styles/index.css"/>
     <script defer src="./app.js"></script>
+    <script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 </head>
 
 <body class="body">
@@ -20,6 +21,17 @@
             </ul>
         </nav>
     </header>
+
+    <!-- <div class="loading_screen">
+        <div class="text-loading">
+            <h1>Loading...</h1>
+        </div>
+        <div class="loading">
+            <div class="linebox">
+                <div class="line"></div>
+            </div>
+        </div>
+    </div> -->
 
     <main class="main">
         <section id="home" class="titulo">
@@ -128,15 +140,15 @@
             <h2 class="projects-area">1. DEVELOPER</h2>
 
                 <div class="projects-dev">
-                    <img src="./assets/images/icons/seta-esquerda.png" height="50px">
+                    <img src="./assets/images/icons/seta-esquerda.png" class="bt-seta">
                     <div class="projects-dev-demo"><p>teste</p></div>
                     <div class="projects-dev-text">
                         <h1 class="projects-dev-title borda-texto-preto2">01</h1>
                         <h2 class="projects-dev-subtitle">Algoritmo de previsão<br>de vendas “ITAMIND”</h2>
                         <p class="textblock">Já se perguntou como evitar o desperdício de produtos congelados por falta de controle de estoque e validade? Este projeto aborda esse desafio, oferecendo um algoritmo inteligente para prever a demanda de SKUs (focamos nas asas de frango). A meta é simplificar a decisão de quanto e quando descongelar, assegurando que os produtos estejam frescos para venda em até 2 dias e minimizando perdas por excesso ou vencimento, por exemplo.</p>
-                        <a href="https://github.com/eliascmendes/ItaMind"> <img src="./assets/images/icons/Redirection.svg" height="28px"> </a>
+                        <a href="https://github.com/eliascmendes/ItaMind"> <img src="./assets/images/icons/Redirection.svg" class="bt-link"> </a>
                     </div> 
-                    <img src="./assets/images/icons/seta-direita.png" height="50px">
+                    <img src="./assets/images/icons/seta-direita.png" class="bt-seta">
                 </div>
 
             <h2 class="projects-area">2. DESIGNER</h2>
@@ -169,29 +181,49 @@
             <h2 class="projects-area">3. ILLUSTRATOR</h2>
 
                 <div class="projects-draw">
-                    <img src="./assets/images/icons/seta-esquerda.png" class="bt-seta">
+                    <!-- <img src="./assets/images/icons/seta-esquerda.png" class="bt-seta"> -->
 
                         <div class="grid-container2">
-                        <div class="box" style="grid-area: box-1"></div>
-                        <div class="box" style="grid-area: box-2"></div>
-                        <div class="box" style="grid-area: box-3">
-                            <img src="./assets/images/projects/illustration/romance down.png" class="gallery__img">
+                        <div class="box" style="grid-area: box-1">
+                            <img src="https://live.staticflickr.com/65535/54715276194_e933568aa5_b.jpg" alt="raiden_shogun" class="gallery__img img-top">
                         </div>
-                        <div class="box" style="grid-area: box-4"></div>
-                        <div class="box" style="grid-area: box-5"></div>
-                        <div class="box" style="grid-area: box-6"></div>
-                        <div class="box" style="grid-area: box-7"></div>
+                        <div class="box" style="grid-area: box-2">
+                            <img src="https://live.staticflickr.com/65535/54715051271_d92e53602a_b.jpg" alt="eileen" class="gallery__img">
+                        </div>
+                        <div class="box" style="grid-area: box-3">
+                            <img src="https://live.staticflickr.com/65535/54715391285_65fd77fb0c_b.jpg" alt="one_piece" class="gallery__img">
+                        </div>
+                        <div class="box" style="grid-area: box-4">
+                            <img src="https://live.staticflickr.com/65535/54715391140_7e66641b4c_b.jpg" alt="naruto" class="gallery__img">
+                        </div>
+                        <div class="box" style="grid-area: box-5">
+                            <img src="https://live.staticflickr.com/65535/54715051206_d7e851e9e5_b.jpg" alt="scott_pilgrim" class="gallery__img">
+                        </div>
+                        <div class="box" style="grid-area: box-6">
+                            <img src="https://live.staticflickr.com/65535/54715260943_0be3bcacce_b.jpg" alt="akira" class="gallery__img">
+                        </div>
+                        <div class="box" style="grid-area: box-7">
+                            <img src="https://live.staticflickr.com/65535/54714215537_3474e73150_b.jpg" alt="goku" class="gallery__img img-bot">
+                        </div>
                         <div class="box" style="grid-area: box-8">
-                            <a class="bt-see-more" href="#">
+                            <a class="bt-see-more" href="https://www.instagram.com/kyukiewk">
                                 <span class="bt-content">
                                     <span class="bt-text">SEE MORE</span>
                                     <img src="./assets/images/icons/Redirection.svg">
                                 </span>
                             </a>
+                            <img src="https://live.staticflickr.com/65535/54714215192_f8b99a1c6b_b.jpg" alt="overthegarden" class="gallery__img">
+                        </div>
+
+                        <div id="lightbox" class="lightbox">
+                            <span class="close">&times;</span>
+                            <span class="prev">&#10094;</span>
+                            <img class="lightbox-img" id="lightbox-img">
+                            <span class="next">&#10095;</span>
                         </div>
                     </div>
 
-                    <img src="./assets/images/icons/seta-direita.png" class="bt-seta">
+                    <!-- <img src="./assets/images/icons/seta-direita.png" class="bt-seta"> -->
                 </div>
         </section>
 
