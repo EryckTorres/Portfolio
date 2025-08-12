@@ -810,7 +810,8 @@ html {
 .rodape_texto {
     color: var(--branco);
     font-family: var(--fonte-principal);
-    font-weight: 300;
-    font-size: 14px;
+    font-weight: 200;
+    font-size: 18px;
     margin: 0;
+    opacity: 0.5;
 }
