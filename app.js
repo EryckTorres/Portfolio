@@ -221,6 +221,35 @@ const projetosDesign = [
             boxTextBg: '#185226',
             boxTextColor: '#F7DBA9'
         }
+    },
+    {
+        id: '03',
+        link: 'https://www.behance.net/gallery/195892235/VELHO-CHICO-IDENTIDADE-VISUAL', // Link do segundo projeto
+        imagens: {
+            logo: './assets/images/projects/design/velhoChico/logo.png',
+            galleryTop: 'https://live.staticflickr.com/65535/54720340192_0ef7d8e649_c.jpg',
+            logotype: './assets/images/projects/design/velhoChico/mockup.png',
+            galleryBot: 'https://live.staticflickr.com/65535/54721169781_ab749d2496_c.jpg',
+            galleryMid: 'https://live.staticflickr.com/65535/54721512605_7f816c0758_c.jpg',
+            gallerySide: 'https://live.staticflickr.com/65535/54721383788_3aedcd4c86_c.jpg',
+            galleryFinal: 'https://live.staticflickr.com/65535/54720340112_3acd7f85ac_c.jpg'
+        },
+        paleta: [
+            { bg: '#333D79', text: '#D9C29E' },
+            { bg: '#F3A94F', text: '#111820' },
+            { bg: '#E94B3D', text: '#111820' },
+            { bg: '#D9C29E', text: '#111820' },
+            { bg: '#111820', text: '#D9C29E' }
+        ],
+        tipografia: {
+            header: 'Bauhaus',
+            body: 'Glacial Indiff'
+        },
+        cores: {
+            logoBoxBg: '#E94B3D',
+            boxTextBg: '#333D79',
+            boxTextColor: '#D9C29E'
+        }
     }
 ];
 

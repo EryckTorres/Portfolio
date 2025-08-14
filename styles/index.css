@@ -516,8 +516,8 @@ html {
 }
 
 .projects-dev-subtitle{
-    font-family: var(--fonte-principal);
-    font-weight: 900;
+    font-family: var(--fonte-destaque);
+    font-weight: 800;
     color: var(--preto);
     font-size: 36px;
     padding-bottom: 8px;
