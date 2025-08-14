@@ -472,11 +472,15 @@ html {
 }
 
 .projects-dev-demo{
-    background-color: var(--preto);
-    height: 580px;
-    width: 600px;
     border-radius: 10px;
     transition: transform 0.3s ease-in-out;
+}
+
+.projects-dev-demo img{
+    border-radius: 10px;
+    width: 600px;
+    height: 580px;
+    object-fit: cover;
 }
 
 .projects-dev-demo:hover{
@@ -516,7 +520,30 @@ html {
     font-weight: 900;
     color: var(--preto);
     font-size: 36px;
-    padding-bottom: 12px;
+    padding-bottom: 8px;
+}
+
+.dev-softwares{
+    display: flex;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+.dev-softwares h4{
+    font-family: var(--fonte-principal);
+    color: var(--branco);
+    font-size: 14px;
+    font-weight: 300;
+    padding: 10px 20px 10px 20px;
+    width: auto;
+    text-align: center;
+    background: var(--preto);
+    border-radius: 50px;
+    transition: transform 0.2s ease;
+}
+
+.dev-softwares h4:hover{
+    transform: scale(1.05);
 }
 
 .projects-dev-demo,
@@ -626,7 +653,6 @@ html {
     height: 100%;
     object-fit: scale-down;
     scale: 0.8;
-    padding-left: 8%;
 }
 
 .logo-img2{

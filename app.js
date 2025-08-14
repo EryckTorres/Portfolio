@@ -100,49 +100,50 @@ const projetos = [
         titulo: 'Sales Forecasting<br>Algorithm “ITAMIND”',
         descricao: 'This project solves the problem of wasted frozen products, such as chicken wings, in supermarkets. It uses an algorithm that predicts sales demand. The goal is to help determine the quantity and timing of thawing, ensuring they are sold within two days and thus avoiding losses due to excess stock or expiration dates.',
         link: 'https://github.com/eliascmendes/ItaMind',
-        imagem: './assets/images/projetos/itamind.png'
+        imagem: './assets/images/projects/dev/itamind.png',
+        softwares: ['CSS', 'HTML 5']
     },
     {
         id: "02",
         titulo: 'The Secret<br>Number Game',
         descricao: 'The "Secret Number" project is a guessing game developed with HTML, CSS, and JavaScript. The logic generates a random number between 1 and 100, and the player must discover what it is. With each attempt, the system provides hints to guide the user. This project is ideal for practicing concepts of DOM manipulation, flow control, and functions in JavaScript.',
         link: 'https://github.com/EryckTorres/numero-secreto',
-        imagem: './assets/images/projetos/ecommerce.png'
+        imagem: './assets/images/projects/dev/numero_secreto.png',
+        softwares: ['JavaScript', 'HTML 5', 'CSS']
     }
 ];
 
 let indiceAtual = 0;
 
-// Encontre os elementos dentro do carrossel de projetos (use querySelectorAll se houver múltiplos)
 const projetosContainer = document.querySelector(".projects-dev");
-
-// Pegue os elementos de descrição diretamente dentro do contêiner
-const imgDemo = projetosContainer.querySelector(".projects-dev-demo");
+const imgDemoContainer = projetosContainer.querySelector(".projects-dev-demo");
+const imgDemo = imgDemoContainer.querySelector("img"); // agora pegamos a imagem diretamente
 const titulo = projetosContainer.querySelector(".projects-dev-title");
 const subtitulo = projetosContainer.querySelector(".projects-dev-subtitle");
 const descricao = projetosContainer.querySelector(".textblock");
 const link = projetosContainer.querySelector(".bt-link");
 const textContainer = projetosContainer.querySelector(".projects-dev-text");
+const softwaresContainer = projetosContainer.querySelector(".dev-softwares");
 
 function atualizarProjeto(direcao) {
     const slideOutClass = direcao === "left" ? "slide-out-left" : "slide-out-right";
 
-    // Aplica animação de saída
-    imgDemo.classList.add(slideOutClass);
+    imgDemoContainer.classList.add(slideOutClass);
     textContainer.classList.add(slideOutClass);
 
     setTimeout(() => {
         const projeto = projetos[indiceAtual];
+
         titulo.innerHTML = projeto.id;
         subtitulo.innerHTML = projeto.titulo;
+        softwaresContainer.innerHTML = projeto.softwares
+            .map(soft => `<h4>${soft}</h4>`)
+            .join('');
         descricao.textContent = projeto.descricao;
         link.parentElement.href = projeto.link;
-        imgDemo.style.backgroundImage = `url('${projeto.imagem}')`;
-        imgDemo.style.backgroundSize = "cover";
-        imgDemo.style.backgroundPosition = "center";
+        imgDemo.src = projeto.imagem; // agora alteramos diretamente o src da imagem
 
-        // Remove classes para resetar estado
-        imgDemo.classList.remove(slideOutClass);
+        imgDemoContainer.classList.remove(slideOutClass);
         textContainer.classList.remove(slideOutClass);
     }, 400);
 }
@@ -185,42 +186,48 @@ const projetosDesign = [
         tipografia: { // Fontes usadas no projeto
             header: 'Mokomori Kuro',
             body: 'Poppins'
+        },
+        cores: {
+            logoBoxBg: '#E8D0A0',
+            boxTextBg: '#E8D0A0',
+            boxTextColor: '#E74431'
         }
     },
     {
         id: '02',
         link: 'https://www.behance.net/gallery/222526779/COLETIVO-EDVARD-DANTAS-IDENTIDADE-VISUAL', // Link do segundo projeto
         imagens: {
-            logo: './assets/images/projects/design/catcafe/logo.png',
-            galleryTop: 'https://live.staticflickr.com/65535/54718235197_8f9ee3b18e_c.jpg',
-            logotype: './assets/images/projects/design/catcafe/logotype.png',
-            galleryBot: 'https://live.staticflickr.com/65535/54718235157_d86238cd42_c.jpg',
-            galleryMid: 'https://live.staticflickr.com/65535/54719128771_bb53d52bf6_c.jpg',
-            gallerySide: 'https://live.staticflickr.com/65535/54719371623_6187c6d32a_c.jpg',
-            galleryFinal: 'https://live.staticflickr.com/65535/54719387634_59f0c62744_c.jpg'
+            logo: './assets/images/projects/design/ced/logotype.png',
+            galleryTop: 'https://live.staticflickr.com/65535/54719419052_2fb11704b6_c.jpg',
+            logotype: './assets/images/projects/design/ced/logo.png',
+            galleryBot: 'https://live.staticflickr.com/65535/54719416222_15ba76c763_c.jpg',
+            galleryMid: 'https://live.staticflickr.com/65535/54720540063_7632610e80_c.jpg',
+            gallerySide: 'https://live.staticflickr.com/65535/54720524608_32be79b9c3_c.jpg',
+            galleryFinal: 'https://live.staticflickr.com/65535/54719415902_faf81fd2b0_c.jpg'
         },
         paleta: [
-            { bg: '#100C32', text: '#EBE9FE' },
-            { bg: '#25206C', text: '#EBE9FE' },
-            { bg: '#4239C8', text: '#EBE9FE' },
-            { bg: '#8B84FD', text: '#100C32' },
-            { bg: '#EBE9FE', text: '#100C32' }
+            { bg: '#FF8A09', text: '#F7DBA9' },
+            { bg: '#00CA42', text: '#185226' },
+            { bg: '#185226', text: '#F7DBA9' },
+            { bg: '#009FEB', text: '#002E6C' },
+            { bg: '#002E6C', text: '#F7DBA9' }
         ],
         tipografia: {
-            header: 'Nico Moji',
-            body: 'Oxanium'
+            header: 'DAGESTAN',
+            body: 'Montserrat'
+        },
+        cores: {
+            logoBoxBg: '#185226',
+            boxTextBg: '#185226',
+            boxTextColor: '#F7DBA9'
         }
     }
-    // Adicione mais objetos de projeto aqui
 ];
-
-// ... (O array projetosDesign e a seleção de elementos continuam os mesmos) ...
 
 let indiceDesignAtual = 0;
 const designContainer = document.querySelector(".projects-design");
 const gridContainer = designContainer.querySelector(".grid-container");
 
-// (todas as suas outras seleções de const logoImg, galleryImgTop, etc. continuam aqui)
 const logoImg = gridContainer.querySelector('[style*="box-1"] .logo-img');
 const galleryImgTop = gridContainer.querySelector('[style*="box-2"] .gallery__img');
 const logotypeImg = gridContainer.querySelector('[style*="box-3"] .logo-img2');
@@ -233,29 +240,21 @@ const seeMoreLink = gridContainer.querySelector('.bt-see-more');
 const galleryImgFinal = gridContainer.querySelector('[style*="box-9"] .gallery__img');
 
 
-// 3. FUNÇÃO ATUALIZADA PARA ATUALIZAR O GRID COM ANIMAÇÃO DE SLIDE
+// 3. FUNÇÃO PARA ATUALIZAR O GRID COM ANIMAÇÃO DE SLIDE
 function atualizarGrid(direcao) {
     const projeto = projetosDesign[indiceDesignAtual];
 
-    // Define para qual lado o grid vai sair e de qual lado ele vai entrar
-    // Se a direção for 'right' (clicou na seta da direita), o grid sai para a esquerda.
     const slideOutDirection = direcao === 'right' ? '-50px' : '50px';
     const slideInDirection = direcao === 'right' ? '50px' : '-50px';
 
-    // ---- Animação de Saída ----
     gridContainer.style.opacity = '0';
     gridContainer.style.transform = `translateX(${slideOutDirection})`;
 
-    // Espera a animação de saída terminar
     setTimeout(() => {
-        // ---- Preparação para Entrada (enquanto invisível) ----
-        // 1. Desliga a transição para que a mudança de posição seja instantânea
+
         gridContainer.style.transition = 'none'; 
-        // 2. Move o grid para a posição de início da animação de entrada
         gridContainer.style.transform = `translateX(${slideInDirection})`;
 
-        // ---- Atualização do Conteúdo ----
-        // (O código para atualizar imagens, paleta, texto, etc., é exatamente o mesmo)
         logoImg.src = projeto.imagens.logo;
         galleryImgTop.src = projeto.imagens.galleryTop;
         logotypeImg.src = projeto.imagens.logotype;
@@ -275,24 +274,31 @@ function atualizarGrid(direcao) {
         const typoHeaders = typoContainer.querySelectorAll('h1');
         typoHeaders[0].textContent = projeto.tipografia.header;
         typoHeaders[1].textContent = projeto.tipografia.body;
-        
 
-        // ---- Animação de Entrada ----
-        // 3. Força o navegador a aplicar as mudanças (um truque comum)
-        // Isso garante que a posição de "teleporte" seja renderizada antes de reativar a animação.
+        const logoBoxes = gridContainer.querySelectorAll('.logo-box');
+        logoBoxes.forEach(lb => lb.style.backgroundColor = projeto.cores.logoBoxBg);
+
+        // Atualiza cores da .box-text
+        typoContainer.style.backgroundColor = projeto.cores.boxTextBg;
+        typoContainer.style.color = projeto.cores.boxTextColor;
+
+        // Atualiza cor do texto interno da box-text
+        typoContainer.querySelectorAll('h1, h2').forEach(el => {
+            el.style.color = projeto.cores.boxTextColor;
+        });
+        
         void gridContainer.offsetWidth; 
 
-        // 4. Religa a transição que definimos no CSS
         gridContainer.style.transition = 'opacity 0.4s ease-in-out, transform 0.4s ease-in-out';
-        // 5. Manda o grid para a posição final (centro e visível)
+
         gridContainer.style.opacity = '1';
         gridContainer.style.transform = 'translateX(0)';
 
-    }, 400); // Este tempo DEVE ser o mesmo da sua transição no CSS
+    }, 400);
 }
 
 
-// 4. EVENTOS DE CLIQUE ATUALIZADOS
+// 4. EVENTOS DE CLIQUE
 document.getElementById("prev-project").addEventListener("click", () => {
     indiceDesignAtual = (indiceDesignAtual - 1 + projetosDesign.length) % projetosDesign.length;
     atualizarGrid('left'); // Informa a direção do clique
@@ -303,10 +309,8 @@ document.getElementById("next-project").addEventListener("click", () => {
     atualizarGrid('right'); // Informa a direção do clique
 });
 
-// 5. INICIALIZA O GRID (sem animação na primeira carga)
+// 5. INICIALIZA O GRID
 // Para evitar uma animação estranha ao carregar a página, podemos carregar o primeiro estado diretamente.
 const primeiroProjeto = projetosDesign[indiceDesignAtual];
 logoImg.src = primeiroProjeto.imagens.logo;
 galleryImgTop.src = primeiroProjeto.imagens.galleryTop;
-//... e assim por diante para todos os outros elementos, como na função de atualizar.
-// (Opcional, mas melhora a experiência inicial)
