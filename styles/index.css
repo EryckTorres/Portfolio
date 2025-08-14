@@ -295,7 +295,7 @@ html {
     font-size: 63px;
     font-weight: 900;
     line-height: 60px;
-    padding-bottom: 50px;
+    padding-bottom: 40px;
 }
 
 .textblock{
@@ -304,6 +304,38 @@ html {
     font-weight: 200;
     font-size: 21px;
     padding-bottom: 18px;
+}
+
+.download-cv{
+    width: 200px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--preto);
+    font-family: var(--fonte-principal);
+    color: var(--branco);
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.download-cv img{
+    padding-left: 10px;
+    filter: invert(88%);
+    transition: filter 0.3s ease;
+}
+
+.download-cv:hover {
+    background: white;
+    color: var(--preto);
+}
+
+.download-cv:hover img {
+    filter: none;
 }
 
 .skills{
@@ -505,6 +537,7 @@ html {
 }
 
 .projects-design{
+    padding-top: 1%;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,3 +1,5 @@
+console.log('olá mundo!');
+
 // Animação de Intro
 
 let intro = document.querySelector('.intro');
@@ -308,5 +310,3 @@ logoImg.src = primeiroProjeto.imagens.logo;
 galleryImgTop.src = primeiroProjeto.imagens.galleryTop;
 //... e assim por diante para todos os outros elementos, como na função de atualizar.
 // (Opcional, mas melhora a experiência inicial)
-
-console.log('olá mundo!');
