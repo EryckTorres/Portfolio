@@ -157,6 +157,156 @@ document.querySelectorAll(".bt-seta")[1].addEventListener("click", () => {
 
 atualizarProjeto();
 
-// Pra dar sorte :3
+// Carrossel de projetos de design
+
+// 1. DADOS DOS PROJETOS DE DESIGN
+const projetosDesign = [
+    {
+        id: '01',
+        link: 'https://www.behance.net/gallery/192205033/pao-que-gato-amassou-IDENTIDADE-VISUAL', // Link para o botão "SEE MORE"
+        imagens: {
+            logo: './assets/images/projects/design/catcafe/logo.png',
+            galleryTop: 'https://live.staticflickr.com/65535/54718235197_8f9ee3b18e_c.jpg',
+            logotype: './assets/images/projects/design/catcafe/logotype.png',
+            galleryBot: 'https://live.staticflickr.com/65535/54718235157_d86238cd42_c.jpg',
+            galleryMid: 'https://live.staticflickr.com/65535/54719128771_bb53d52bf6_c.jpg',
+            gallerySide: 'https://live.staticflickr.com/65535/54719371623_6187c6d32a_c.jpg',
+            galleryFinal: 'https://live.staticflickr.com/65535/54719387634_59f0c62744_c.jpg'
+        },
+        paleta: [ // Array com 5 cores para a paleta
+            { bg: '#530C00', text: '#E8D0A0' },
+            { bg: '#AC4C34', text: '#E8D0A0' },
+            { bg: '#E74431', text: '#E8D0A0' },
+            { bg: '#D3AD64', text: '#530C00' },
+            { bg: '#E8D0A0', text: '#530C00' }
+        ],
+        tipografia: { // Fontes usadas no projeto
+            header: 'Mokomori Kuro',
+            body: 'Poppins'
+        }
+    },
+    {
+        id: '02',
+        link: 'https://www.behance.net/gallery/222526779/COLETIVO-EDVARD-DANTAS-IDENTIDADE-VISUAL', // Link do segundo projeto
+        imagens: {
+            logo: './assets/images/projects/design/catcafe/logo.png',
+            galleryTop: 'https://live.staticflickr.com/65535/54718235197_8f9ee3b18e_c.jpg',
+            logotype: './assets/images/projects/design/catcafe/logotype.png',
+            galleryBot: 'https://live.staticflickr.com/65535/54718235157_d86238cd42_c.jpg',
+            galleryMid: 'https://live.staticflickr.com/65535/54719128771_bb53d52bf6_c.jpg',
+            gallerySide: 'https://live.staticflickr.com/65535/54719371623_6187c6d32a_c.jpg',
+            galleryFinal: 'https://live.staticflickr.com/65535/54719387634_59f0c62744_c.jpg'
+        },
+        paleta: [
+            { bg: '#100C32', text: '#EBE9FE' },
+            { bg: '#25206C', text: '#EBE9FE' },
+            { bg: '#4239C8', text: '#EBE9FE' },
+            { bg: '#8B84FD', text: '#100C32' },
+            { bg: '#EBE9FE', text: '#100C32' }
+        ],
+        tipografia: {
+            header: 'Nico Moji',
+            body: 'Oxanium'
+        }
+    }
+    // Adicione mais objetos de projeto aqui
+];
+
+// ... (O array projetosDesign e a seleção de elementos continuam os mesmos) ...
+
+let indiceDesignAtual = 0;
+const designContainer = document.querySelector(".projects-design");
+const gridContainer = designContainer.querySelector(".grid-container");
+
+// (todas as suas outras seleções de const logoImg, galleryImgTop, etc. continuam aqui)
+const logoImg = gridContainer.querySelector('[style*="box-1"] .logo-img');
+const galleryImgTop = gridContainer.querySelector('[style*="box-2"] .gallery__img');
+const logotypeImg = gridContainer.querySelector('[style*="box-3"] .logo-img2');
+const galleryImgBot = gridContainer.querySelector('[style*="box-4"] .gallery__img');
+const paletteContainer = gridContainer.querySelector('.palette-cascade');
+const galleryImgMid = gridContainer.querySelector('[style*="box-6"] .gallery__img');
+const typoContainer = gridContainer.querySelector('.box-text');
+const galleryImgSide = gridContainer.querySelector('[style*="box-8"] .gallery__img');
+const seeMoreLink = gridContainer.querySelector('.bt-see-more');
+const galleryImgFinal = gridContainer.querySelector('[style*="box-9"] .gallery__img');
+
+
+// 3. FUNÇÃO ATUALIZADA PARA ATUALIZAR O GRID COM ANIMAÇÃO DE SLIDE
+function atualizarGrid(direcao) {
+    const projeto = projetosDesign[indiceDesignAtual];
+
+    // Define para qual lado o grid vai sair e de qual lado ele vai entrar
+    // Se a direção for 'right' (clicou na seta da direita), o grid sai para a esquerda.
+    const slideOutDirection = direcao === 'right' ? '-50px' : '50px';
+    const slideInDirection = direcao === 'right' ? '50px' : '-50px';
+
+    // ---- Animação de Saída ----
+    gridContainer.style.opacity = '0';
+    gridContainer.style.transform = `translateX(${slideOutDirection})`;
+
+    // Espera a animação de saída terminar
+    setTimeout(() => {
+        // ---- Preparação para Entrada (enquanto invisível) ----
+        // 1. Desliga a transição para que a mudança de posição seja instantânea
+        gridContainer.style.transition = 'none'; 
+        // 2. Move o grid para a posição de início da animação de entrada
+        gridContainer.style.transform = `translateX(${slideInDirection})`;
+
+        // ---- Atualização do Conteúdo ----
+        // (O código para atualizar imagens, paleta, texto, etc., é exatamente o mesmo)
+        logoImg.src = projeto.imagens.logo;
+        galleryImgTop.src = projeto.imagens.galleryTop;
+        logotypeImg.src = projeto.imagens.logotype;
+        galleryImgBot.src = projeto.imagens.galleryBot;
+        galleryImgMid.src = projeto.imagens.galleryMid;
+        galleryImgSide.src = projeto.imagens.gallerySide;
+        galleryImgFinal.src = projeto.imagens.galleryFinal;
+        seeMoreLink.href = projeto.link;
+        const paletaDivs = paletteContainer.querySelectorAll('div');
+        paletaDivs.forEach((div, index) => {
+            const cor = projeto.paleta[index];
+            div.style.background = cor.bg;
+            const h2 = div.querySelector('h2');
+            h2.textContent = cor.bg.toUpperCase();
+            h2.style.color = cor.text;
+        });
+        const typoHeaders = typoContainer.querySelectorAll('h1');
+        typoHeaders[0].textContent = projeto.tipografia.header;
+        typoHeaders[1].textContent = projeto.tipografia.body;
+        
+
+        // ---- Animação de Entrada ----
+        // 3. Força o navegador a aplicar as mudanças (um truque comum)
+        // Isso garante que a posição de "teleporte" seja renderizada antes de reativar a animação.
+        void gridContainer.offsetWidth; 
+
+        // 4. Religa a transição que definimos no CSS
+        gridContainer.style.transition = 'opacity 0.4s ease-in-out, transform 0.4s ease-in-out';
+        // 5. Manda o grid para a posição final (centro e visível)
+        gridContainer.style.opacity = '1';
+        gridContainer.style.transform = 'translateX(0)';
+
+    }, 400); // Este tempo DEVE ser o mesmo da sua transição no CSS
+}
+
+
+// 4. EVENTOS DE CLIQUE ATUALIZADOS
+document.getElementById("prev-project").addEventListener("click", () => {
+    indiceDesignAtual = (indiceDesignAtual - 1 + projetosDesign.length) % projetosDesign.length;
+    atualizarGrid('left'); // Informa a direção do clique
+});
+
+document.getElementById("next-project").addEventListener("click", () => {
+    indiceDesignAtual = (indiceDesignAtual + 1) % projetosDesign.length;
+    atualizarGrid('right'); // Informa a direção do clique
+});
+
+// 5. INICIALIZA O GRID (sem animação na primeira carga)
+// Para evitar uma animação estranha ao carregar a página, podemos carregar o primeiro estado diretamente.
+const primeiroProjeto = projetosDesign[indiceDesignAtual];
+logoImg.src = primeiroProjeto.imagens.logo;
+galleryImgTop.src = primeiroProjeto.imagens.galleryTop;
+//... e assim por diante para todos os outros elementos, como na função de atualizar.
+// (Opcional, mas melhora a experiência inicial)
 
 console.log('olá mundo!');
