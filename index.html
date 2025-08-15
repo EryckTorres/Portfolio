@@ -18,7 +18,7 @@
     </div>
 
     <header class="header">
-        <img src="./assets/images/flags/US_FLAG.png" alt="English" class="flag-icon" />
+        <div class="flag-icon"> <img src="./assets/images/flags/US_FLAG.png" alt="English" /> </div>
         <nav class="nav">
             <ul class="nav-list">
                 <li><a href="#home">HOME</a></li>
@@ -28,17 +28,6 @@
             </ul>
         </nav>
     </header>
-
-    <!-- <div class="loading_screen">
-        <div class="text-loading">
-            <h1>Loading...</h1>
-        </div>
-        <div class="loading">
-            <div class="linebox">
-                <div class="line"></div>
-            </div>
-        </div>
-    </div> -->
 
     <main class="main">
         <section id="home" class="titulo">
@@ -288,16 +277,26 @@
                 <h1 class="contact-title borda-texto-branco">Ring a bell!</h1>
                 <p class="textblock-alt">Ready for the next challenge! Get in touch to discuss<br>how we can bring together design and technology in your project.</p>
 
-                <form class="contact-form">
+                <form action="https://formspree.io/f/xdkdjyqp" method="post" class="contact-form" id="contactForm">
                     <input type="text" name="name" placeholder="Name" required>
                     <input type="email" name="email" placeholder="E-mail" required>
                     <textarea name="message" placeholder="How can I help ya?" required></textarea>
                     <div class="form-buttons">
                         <button class="flex" type="submit">Send</button>
-                        <button href="#" type="button"><img src="./assets/images/icons/linkedin.svg" width="32px"></button>
-                        <button href="#" type="button"><img src="./assets/images/icons/whatsapp.svg" width="32px"></button>
+                        <button type="button">
+                            <a target="_blank" href="https://www.linkedin.com/in/erycktorres">
+                                <img src="./assets/images/icons/linkedin.svg" width="32px">
+                            </a>
+                        </button>
+                        <button type="button">
+                            <a target="_blank" href="https://wa.link/87tp2i">
+                                <img src="./assets/images/icons/whatsapp.svg" width="32px">
+                            </a>
+                        </button>
                     </div>
                 </form>
+
+                <div id="form-status" class="form-status"></div>
             </div>
         </section>
 

@@ -43,6 +43,65 @@ window.addEventListener('scroll', function() {
     }
 });
 
+//Plugin de idioma
+
+//Formulário
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Seleciona o formulário e o elemento onde a mensagem de status será exibida
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('form-status');
+
+    // Adiciona um "ouvinte" para o evento de submit do formulário
+    form.addEventListener('submit', async (event) => {
+        
+        // Impede que o formulário seja enviado da maneira tradicional (recarregando a página)
+        event.preventDefault();
+
+        // Limpa qualquer mensagem de status anterior
+        status.textContent = 'Enviando...';
+        status.style.color = 'var(--branco)'; // Ajuste a cor conforme seu CSS
+        
+        // Obtém o URL do action do formulário
+        const formAction = form.action;
+
+        // Cria um objeto com os dados do formulário
+        const data = new FormData(form);
+
+        try {
+            // Usa a API 'fetch' para enviar os dados de forma assíncrona
+            const response = await fetch(formAction, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            // Verifica se a resposta foi bem-sucedida
+            if (response.ok) {
+                status.textContent = 'Mensagem enviada com sucesso! Em breve, entrarei em contato.';
+                status.style.color = 'green'; // Cor para sucesso
+                form.reset(); // Reseta o formulário
+            } else {
+                // Se a resposta não for ok, lê a resposta JSON para obter a mensagem de erro
+                const responseData = await response.json();
+                if (responseData.errors) {
+                    // Exibe a primeira mensagem de erro retornada pelo Formspree
+                    status.textContent = responseData.errors.map(error => error.message).join(", ");
+                } else {
+                    status.textContent = 'Ocorreu um erro no envio. Por favor, tente novamente.';
+                }
+                status.style.color = 'red'; // Cor para erro
+            }
+        } catch (error) {
+            // Em caso de erro de rede (por exemplo, sem internet)
+            status.textContent = 'Houve um problema com a conexão. Verifique sua internet e tente novamente.';
+            status.style.color = 'red'; // Cor para erro
+        }
+    });
+});
+
 // LightBox
 
 const images = document.querySelectorAll('.grid-container2 img');

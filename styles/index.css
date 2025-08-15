@@ -111,7 +111,7 @@
     transition: opacity 0.3s ease;
 }
 
-.flag-icon { 
+/* .flag-icon { 
     position: fixed;
     top: 5%;
     left: 7%;
@@ -121,7 +121,31 @@
     border: 7px solid var(--preto);
     object-fit: cover;
     z-index: 1001;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.1s ease-in-out;
+} */
+
+.flag-icon { 
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 5%;
+    left: 7%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    background: var(--preto);
+    border-radius: 50%;
+    z-index: 1001;
+    transition: opacity 0.3s ease, transform 0.1s ease-in-out;
+}
+
+.flag-icon img{
+    position: relative;
+    object-fit: cover;
+    width: 35px;
+    z-index: 1001;
+    transition: opacity 0.3s ease, transform 0.1s ease-in-out;
 }
 
 .nav {
@@ -155,6 +179,7 @@
     opacity: 1 !important;
 }
 .flag-icon:hover {
+    transform: scale(1.05);
     opacity: 1 !important;
 }
 .header:hover {
@@ -181,6 +206,7 @@ html {
     padding-left: 7%;
     padding-right: 7%;
 }
+
 
 .titulo-nome {
     color: var(--branco);
@@ -887,9 +913,17 @@ html {
     outline: none;
 }
 
+.contact-form input:focus-within{
+    transform: scale(1.02);
+}
+
 .contact-form textarea {
     resize: none;
     height: 170px;
+}
+
+.contact-form textarea:focus-within{
+    transform: scale(1.02);
 }
 
 .form-buttons {
@@ -907,8 +941,12 @@ html {
     font-family: var(--fonte-principal);
     font-size: 1.2rem;
     border-radius: 5px;
+    height: 50px;
     cursor: pointer;
     transition: background 0.3s ease;
+}
+.form-buttons > button > a{
+    height: 32px;
 }
 
 .form-buttons button:hover {
@@ -917,6 +955,12 @@ html {
 
 .flex{
     width: 200px;
+}
+
+.form-status{
+    font-family: var(--fonte-principal);
+    font-size: 16px;
+    font-weight: 300;
 }
 
 /* Rodapé */
