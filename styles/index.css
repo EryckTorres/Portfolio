@@ -148,6 +148,7 @@
     color: var(--branco);
     padding-block: 16px;
     text-decoration: none;
+    transition: color 0.1s ease, font-weight 0.1s ease;
 }
 
 .nav:hover {
@@ -162,7 +163,7 @@
 
 .nav-list a:hover {
     color: #ffffff;
-    transform: scale(1.1);
+    font-weight: 300;
 }
 
 html {
@@ -539,11 +540,12 @@ html {
     text-align: center;
     background: var(--preto);
     border-radius: 50px;
-    transition: transform 0.2s ease;
+    transition: transform 0.1s ease, font-weight 0.1s ease;
 }
 
 .dev-softwares h4:hover{
     transform: scale(1.05);
+    font-weight: 400;
 }
 
 .projects-dev-demo,
