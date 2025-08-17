@@ -25,24 +25,24 @@
         1px 1px 0 var(--preto);
 
     --borda-texto-branco:
-        -2px -2px 0 var(--branco),
-        0 -2px 0 var(--branco),
-        2px -2px 0 var(--branco),
-        -2px 0 0 var(--branco),
-        2px 0 0 var(--branco),
-        -2px 2px 0 var(--branco),
-        0 2px 0 var(--branco),
-        2px 2px 0 var(--branco);
+        -2px solid var(--preto) -2px solid var(--preto) 0 var(--branco),
+        0 -2px solid var(--preto) 0 var(--branco),
+        2px solid var(--preto) -2px solid var(--preto) 0 var(--branco),
+        -2px solid var(--preto) 0 0 var(--branco),
+        2px solid var(--preto) 0 0 var(--branco),
+        -2px solid var(--preto) 2px solid var(--preto) 0 var(--branco),
+        0 2px solid var(--preto) 0 var(--branco),
+        2px solid var(--preto) 2px solid var(--preto) 0 var(--branco);
 
     --borda-texto-preto2:
-        -2px -2px 0 var(--preto),
-        0 -2px 0 var(--preto),
-        2px -2px 0 var(--preto),
-        -2px 0 0 var(--preto),
-        2px 0 0 var(--preto),
-        -2px 2px 0 var(--preto),
-        0 2px 0 var(--preto),
-        2px 2px 0 var(--preto);
+        -2px solid var(--preto) -2px solid var(--preto) 0 var(--preto),
+        0 -2px solid var(--preto) 0 var(--preto),
+        2px solid var(--preto) -2px solid var(--preto) 0 var(--preto),
+        -2px solid var(--preto) 0 0 var(--preto),
+        2px solid var(--preto) 0 0 var(--preto),
+        -2px solid var(--preto) 2px solid var(--preto) 0 var(--preto),
+        0 2px solid var(--preto) 0 var(--preto),
+        2px solid var(--preto) 2px solid var(--preto) 0 var(--preto);
 }
 
 .borda-texto{
@@ -201,6 +201,8 @@ html {
 
 .titulo {
     margin-top: 13%;
+}
+.titulo-lines{
     display: flex;
     flex-direction: column;
     padding-left: 7%;
@@ -233,13 +235,27 @@ html {
     color: var(--preto);
 }
 
-.subtitulo-main {
+.subtitulo-main { 
+    margin-left: 7%;
+    margin-right: 7%;
     font-family: var(--fonte-principal);
     font-weight: 300;
     font-size: 24px;
+
+    padding-right: 2px;
+    border-right: 2px solid var(--preto);
+    white-space: nowrap;
+    overflow: hidden;
+    animation: cursor .4s step-end infinite alternate;
+}
+
+@keyframes cursor{
+    50% {border-color: transparent;}
 }
 
 .titulo-icons {
+    margin-left: 7%;
+    margin-right: 7%;
     width: 129px;
     display: flex;
     justify-content: space-between;
@@ -323,6 +339,22 @@ html {
     font-weight: 900;
     line-height: 60px;
     padding-bottom: 40px;
+}
+
+.about-nome {
+    border-right: 3px solid var(--preto); /* cursor */
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline; /* em vez de inline-block */
+    vertical-align: baseline; /* garante alinhamento com o texto */
+    padding-right: 2px; /* espaço pro cursor não colar no texto */
+    min-width: 8ch; /* reserva espaço equivalente ao maior nome */
+
+    animation: cursor .4s step-end infinite alternate;
+}
+
+@keyframes cursor{
+    50% {border-color: transparent;}
 }
 
 .textblock{
@@ -903,7 +935,7 @@ html {
 .contact-form input,
 .contact-form textarea {
     background: transparent;
-    border: 2px solid var(--branco);
+    border: 2px solid var(--preto) solid var(--branco);
     color: var(--branco);
     padding: 10px;
     font-family: var(--fonte-principal);

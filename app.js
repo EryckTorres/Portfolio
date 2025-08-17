@@ -43,29 +43,100 @@ window.addEventListener('scroll', function() {
     }
 });
 
+//Efeito Typewriter
+const textos = ["DESIGNER", "DEVELOPER", "ILLUSTRATOR"];
+const elemento = document.querySelector(".subtitulo-main");
+
+let indiceTexto = 0;
+let indiceLetra = 0;
+let apagando = false;
+
+// velocidades configuráveis
+const speedWrite = 120;
+const speedDelete = 70;
+const pause = 1000;
+const startDelay = 3000;
+
+function digitar() {
+  let textoAtual = textos[indiceTexto];
+
+  if (!apagando) {
+    elemento.textContent = textoAtual.slice(0, indiceLetra++);
+    if (indiceLetra > textoAtual.length) {
+      apagando = true;
+      setTimeout(digitar, pause);
+      return;
+    }
+  } else {
+    elemento.textContent = textoAtual.slice(0, indiceLetra--);
+    if (indiceLetra < 0) {
+      apagando = false;
+      indiceTexto = (indiceTexto + 1) % textos.length;
+      indiceLetra = 0;
+    }
+  }
+
+  setTimeout(digitar, apagando ? speedDelete : speedWrite);
+}
+
+// só começa 3 segundos depois que a página carregar
+window.addEventListener("load", () => {
+  setTimeout(digitar, startDelay);
+});
+
+//Typewriter About Me
+const nomesAbout = ["Eryck", "Kyukiew"];
+const nomeElementoAbout = document.querySelector(".about-nome");
+
+let indiceNomeAbout = 0;
+let indiceLetraAbout = nomesAbout[indiceNomeAbout].length;
+let apagandoAbout = true;
+
+// velocidades configuráveis
+const speedWriteAbout = 200;
+const speedDeleteAbout = 160;
+const pauseAbout = 1000;
+const startDelayAbout = 2000;
+
+function digitarNomeAbout() {
+  let nomeAtual = nomesAbout[indiceNomeAbout];
+
+  if (!apagandoAbout) {
+    nomeElementoAbout.textContent = nomeAtual.slice(0, indiceLetraAbout++);
+    if (indiceLetraAbout > nomeAtual.length) {
+      apagandoAbout = true;
+      setTimeout(digitarNomeAbout, pauseAbout);
+      return;
+    }
+  } else {
+    nomeElementoAbout.textContent = nomeAtual.slice(0, indiceLetraAbout--);
+    if (indiceLetraAbout < 0) {
+      apagandoAbout = false;
+      indiceNomeAbout = (indiceNomeAbout + 1) % nomesAbout.length;
+      indiceLetraAbout = 0;
+    }
+  }
+
+  setTimeout(digitarNomeAbout, apagandoAbout ? speedDeleteAbout : speedWriteAbout);
+}
+
+window.addEventListener("load", () => {
+  setTimeout(digitarNomeAbout, startDelayAbout);
+});
+
 //Plugin de idioma
 
 //Formulário
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // Seleciona o formulário e o elemento onde a mensagem de status será exibida
     const form = document.getElementById('contactForm');
     const status = document.getElementById('form-status');
 
-    // Adiciona um "ouvinte" para o evento de submit do formulário
     form.addEventListener('submit', async (event) => {
-        
-        // Impede que o formulário seja enviado da maneira tradicional (recarregando a página)
         event.preventDefault();
-
-        // Limpa qualquer mensagem de status anterior
         status.textContent = 'Enviando...';
-        status.style.color = 'var(--branco)'; // Ajuste a cor conforme seu CSS
-        
-        // Obtém o URL do action do formulário
-        const formAction = form.action;
+        status.style.color = 'var(--branco)';
 
-        // Cria um objeto com os dados do formulário
+        const formAction = form.action;
         const data = new FormData(form);
 
         try {
@@ -78,26 +149,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Verifica se a resposta foi bem-sucedida
             if (response.ok) {
                 status.textContent = 'Mensagem enviada com sucesso! Em breve, entrarei em contato.';
-                status.style.color = 'green'; // Cor para sucesso
-                form.reset(); // Reseta o formulário
+                status.style.color = 'green';
+                form.reset();
             } else {
-                // Se a resposta não for ok, lê a resposta JSON para obter a mensagem de erro
                 const responseData = await response.json();
                 if (responseData.errors) {
-                    // Exibe a primeira mensagem de erro retornada pelo Formspree
                     status.textContent = responseData.errors.map(error => error.message).join(", ");
                 } else {
                     status.textContent = 'Ocorreu um erro no envio. Por favor, tente novamente.';
                 }
-                status.style.color = 'red'; // Cor para erro
+                status.style.color = 'red';
             }
         } catch (error) {
-            // Em caso de erro de rede (por exemplo, sem internet)
             status.textContent = 'Houve um problema com a conexão. Verifique sua internet e tente novamente.';
-            status.style.color = 'red'; // Cor para erro
+            status.style.color = 'red';
         }
     });
 });
@@ -114,7 +181,7 @@ const nextBtn = document.querySelector('.next');
 let currentIndex = 0;
 
 function showImage(index) {
-    lightboxImg.style.opacity = 0; // inicia transição
+    lightboxImg.style.opacity = 0;
     setTimeout(() => {
         lightboxImg.src = images[index].src;
         lightboxImg.style.opacity = 1;
@@ -152,7 +219,6 @@ nextBtn.addEventListener('click', (e) => {
 });
 
 // Carrossel de Projetos
-
 const projetos = [
     {
         id: "01",
@@ -220,12 +286,10 @@ document.querySelectorAll(".bt-seta")[1].addEventListener("click", () => {
 atualizarProjeto();
 
 // Carrossel de projetos de design
-
-// 1. DADOS DOS PROJETOS DE DESIGN
 const projetosDesign = [
     {
         id: '01',
-        link: 'https://www.behance.net/gallery/192205033/pao-que-gato-amassou-IDENTIDADE-VISUAL', // Link para o botão "SEE MORE"
+        link: 'https://www.behance.net/gallery/192205033/pao-que-gato-amassou-IDENTIDADE-VISUAL',
         imagens: {
             logo: './assets/images/projects/design/catcafe/logo.png',
             galleryTop: 'https://live.staticflickr.com/65535/54718235197_8f9ee3b18e_c.jpg',
@@ -235,14 +299,14 @@ const projetosDesign = [
             gallerySide: 'https://live.staticflickr.com/65535/54719371623_6187c6d32a_c.jpg',
             galleryFinal: 'https://live.staticflickr.com/65535/54719387634_59f0c62744_c.jpg'
         },
-        paleta: [ // Array com 5 cores para a paleta
+        paleta: [
             { bg: '#530C00', text: '#E8D0A0' },
             { bg: '#AC4C34', text: '#E8D0A0' },
             { bg: '#E74431', text: '#E8D0A0' },
             { bg: '#D3AD64', text: '#530C00' },
             { bg: '#E8D0A0', text: '#530C00' }
         ],
-        tipografia: { // Fontes usadas no projeto
+        tipografia: {
             header: 'Mokomori Kuro',
             body: 'Poppins'
         },
@@ -254,7 +318,7 @@ const projetosDesign = [
     },
     {
         id: '02',
-        link: 'https://www.behance.net/gallery/222526779/COLETIVO-EDVARD-DANTAS-IDENTIDADE-VISUAL', // Link do segundo projeto
+        link: 'https://www.behance.net/gallery/222526779/COLETIVO-EDVARD-DANTAS-IDENTIDADE-VISUAL',
         imagens: {
             logo: './assets/images/projects/design/ced/logotype.png',
             galleryTop: 'https://live.staticflickr.com/65535/54719419052_2fb11704b6_c.jpg',
@@ -283,7 +347,7 @@ const projetosDesign = [
     },
     {
         id: '03',
-        link: 'https://www.behance.net/gallery/195892235/VELHO-CHICO-IDENTIDADE-VISUAL', // Link do segundo projeto
+        link: 'https://www.behance.net/gallery/195892235/VELHO-CHICO-IDENTIDADE-VISUAL',
         imagens: {
             logo: './assets/images/projects/design/velhoChico/logo.png',
             galleryTop: 'https://live.staticflickr.com/65535/54720340192_0ef7d8e649_c.jpg',
@@ -327,11 +391,8 @@ const galleryImgSide = gridContainer.querySelector('[style*="box-8"] .gallery__i
 const seeMoreLink = gridContainer.querySelector('.bt-see-more');
 const galleryImgFinal = gridContainer.querySelector('[style*="box-9"] .gallery__img');
 
-
-// 3. FUNÇÃO PARA ATUALIZAR O GRID COM ANIMAÇÃO DE SLIDE
 function atualizarGrid(direcao) {
     const projeto = projetosDesign[indiceDesignAtual];
-
     const slideOutDirection = direcao === 'right' ? '-50px' : '50px';
     const slideInDirection = direcao === 'right' ? '50px' : '-50px';
 
@@ -359,6 +420,7 @@ function atualizarGrid(direcao) {
             h2.textContent = cor.bg.toUpperCase();
             h2.style.color = cor.text;
         });
+
         const typoHeaders = typoContainer.querySelectorAll('h1');
         typoHeaders[0].textContent = projeto.tipografia.header;
         typoHeaders[1].textContent = projeto.tipografia.body;
@@ -366,11 +428,9 @@ function atualizarGrid(direcao) {
         const logoBoxes = gridContainer.querySelectorAll('.logo-box');
         logoBoxes.forEach(lb => lb.style.backgroundColor = projeto.cores.logoBoxBg);
 
-        // Atualiza cores da .box-text
         typoContainer.style.backgroundColor = projeto.cores.boxTextBg;
         typoContainer.style.color = projeto.cores.boxTextColor;
 
-        // Atualiza cor do texto interno da box-text
         typoContainer.querySelectorAll('h1, h2').forEach(el => {
             el.style.color = projeto.cores.boxTextColor;
         });
@@ -385,20 +445,16 @@ function atualizarGrid(direcao) {
     }, 400);
 }
 
-
-// 4. EVENTOS DE CLIQUE
 document.getElementById("prev-project").addEventListener("click", () => {
     indiceDesignAtual = (indiceDesignAtual - 1 + projetosDesign.length) % projetosDesign.length;
-    atualizarGrid('left'); // Informa a direção do clique
+    atualizarGrid('left');
 });
 
 document.getElementById("next-project").addEventListener("click", () => {
     indiceDesignAtual = (indiceDesignAtual + 1) % projetosDesign.length;
-    atualizarGrid('right'); // Informa a direção do clique
+    atualizarGrid('right');
 });
 
-// 5. INICIALIZA O GRID
-// Para evitar uma animação estranha ao carregar a página, podemos carregar o primeiro estado diretamente.
 const primeiroProjeto = projetosDesign[indiceDesignAtual];
 logoImg.src = primeiroProjeto.imagens.logo;
 galleryImgTop.src = primeiroProjeto.imagens.galleryTop;
