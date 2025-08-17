@@ -25,24 +25,24 @@
         1px 1px 0 var(--preto);
 
     --borda-texto-branco:
-        -2px solid var(--preto) -2px solid var(--preto) 0 var(--branco),
-        0 -2px solid var(--preto) 0 var(--branco),
-        2px solid var(--preto) -2px solid var(--preto) 0 var(--branco),
-        -2px solid var(--preto) 0 0 var(--branco),
-        2px solid var(--preto) 0 0 var(--branco),
-        -2px solid var(--preto) 2px solid var(--preto) 0 var(--branco),
-        0 2px solid var(--preto) 0 var(--branco),
-        2px solid var(--preto) 2px solid var(--preto) 0 var(--branco);
+        -2px -2px 0 var(--branco),
+        0 -2px 0 var(--branco),
+        1px -2px 0 var(--branco),
+        -2px 0 0 var(--branco),
+        2px 0 0 var(--branco),
+        -2px 2px 0 var(--branco),
+        0 2px 0 var(--branco),
+        2px 2px 0 var(--branco);
 
     --borda-texto-preto2:
-        -2px solid var(--preto) -2px solid var(--preto) 0 var(--preto),
-        0 -2px solid var(--preto) 0 var(--preto),
-        2px solid var(--preto) -2px solid var(--preto) 0 var(--preto),
-        -2px solid var(--preto) 0 0 var(--preto),
-        2px solid var(--preto) 0 0 var(--preto),
-        -2px solid var(--preto) 2px solid var(--preto) 0 var(--preto),
-        0 2px solid var(--preto) 0 var(--preto),
-        2px solid var(--preto) 2px solid var(--preto) 0 var(--preto);
+        -2px -2px 0 var(--preto),
+        0 -2px 0 var(--preto),
+        2px -2px 0 var(--preto),
+        -2px 0 0 var(--preto),
+        2px 0 0 var(--preto),
+        -2px 2px 0 var(--preto),
+        0 2px 0 var(--preto),
+        2px 2px 0 var(--preto);
 }
 
 .borda-texto{
@@ -329,11 +329,11 @@ html {
 }
 
 .about-text{
-    margin: 3% 10% 0% 10%;
+    margin: 3% 8% 0% 8%;
 }
 
 .about-titulo{
-    font-family: var(--fonte-principal);
+    font-family: var(--fonte-destaque);
     color: var(--preto);
     font-size: 63px;
     font-weight: 900;
@@ -492,7 +492,7 @@ html {
 
 .bottom{
     margin-bottom: -5px;
-    padding-bottom: 78px;
+    padding-bottom: 75px;
     transform: scaleY(-1);
 }
 
@@ -935,7 +935,7 @@ html {
 .contact-form input,
 .contact-form textarea {
     background: transparent;
-    border: 2px solid var(--preto) solid var(--branco);
+    border: 2px solid var(--branco);
     color: var(--branco);
     padding: 10px;
     font-family: var(--fonte-principal);
