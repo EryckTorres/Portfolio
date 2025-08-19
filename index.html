@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en-us">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-    <link rel="stylesheet" href="./styles/index.css"/>
+    <link rel="stylesheet" href="./styles/index2.css"/>
     <script defer src="./app.js"></script>
+    <script defer src="./translation.js"></script>
     <script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 </head>
 
@@ -18,7 +19,12 @@
     </div>
 
     <header class="header">
-        <div class="flag-icon"> <img src="./assets/images/flags/US_FLAG.png" alt="English" /> </div>
+
+        <div class="flag-selector">
+            <img src="./assets/images/flags/US_FLAG.png" alt="English" class="main-flag" />
+            <div class="options"></div>
+        </div>
+
         <nav class="nav">
             <ul class="nav-list">
                 <li><a href="#home">HOME</a></li>
@@ -27,6 +33,7 @@
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
+
     </header>
 
     <main class="main">
@@ -34,7 +41,7 @@
             <div class="titulo-lines">
                 <h2 class="titulo-nome borda-texto">ERYCK<br>TORRES</h2>
                 <h3 class="subtitulo">AKA.: KYUKIEW</h3>
-                <h1 class="titulo-main" >PORT<br>FOLIO</h1>
+                <h1 id="portfolio-title" class="titulo-main" >PORT<br>FOLIO</h1>
             </div>
             
             <div class="subtitulo-main-container">
@@ -73,7 +80,7 @@
             </div>
 
             <div class="about-text">
-                <h1 class="about-titulo">Hello,<br>I'm <span class="about-nome">Eryck</span>!</h1>
+                <h1 id="about-title" class="about-titulo">Hello,<br>I'm <span class="about-nome">Eryck</span>!</h1>
                 <p class="textblock">I'm a Design student at the Federal University of Maranhão (UFMA), focusing on <strong>front-end and UX design.</strong> My goal is to combine the aesthetics of design with the functionality of technology, creating intuitive and visually appealing digital experiences. I'm also passionate about <strong>digital illustration and branding,</strong> as I believe these fields allow me to express my creativity while effectively solving communication and visual identity problems. My portfolio reflects this enthusiasm, where I seek to apply my passion and skills to develop innovative and impactful projects.</p>
 
                 <a class="download-cv" href="./assets/docs/Eryck_Torres_CV.pdf" download>Download CV <img src="./assets/images/icons/file-down.svg"></a>
@@ -309,7 +316,7 @@
     </main>
 
     <footer class="rodape">
-        <p class="rodape_texto"> © 2025 <strong>Eryck Torres.</strong> Todos os direitos reservados.</p>
+        <p class="rodape_texto"> © 2025 <strong>Eryck Torres.</strong> All rights reserved.</p>
     </footer>
 
 </body>

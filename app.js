@@ -124,8 +124,6 @@ window.addEventListener("load", () => {
   setTimeout(digitarNomeAbout, startDelayAbout);
 });
 
-//Plugin de idioma
-
 //Formulário
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('contactForm');
