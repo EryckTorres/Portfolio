@@ -84,46 +84,6 @@ window.addEventListener("load", () => {
   setTimeout(digitar, startDelay);
 });
 
-//Typewriter About Me
-const nomesAbout = ["Eryck", "Kyukiew"];
-const nomeElementoAbout = document.querySelector(".about-nome");
-
-let indiceNomeAbout = 0;
-let indiceLetraAbout = nomesAbout[indiceNomeAbout].length;
-let apagandoAbout = true;
-
-// velocidades configuráveis
-const speedWriteAbout = 200;
-const speedDeleteAbout = 160;
-const pauseAbout = 1000;
-const startDelayAbout = 2000;
-
-function digitarNomeAbout() {
-  let nomeAtual = nomesAbout[indiceNomeAbout];
-
-  if (!apagandoAbout) {
-    nomeElementoAbout.textContent = nomeAtual.slice(0, indiceLetraAbout++);
-    if (indiceLetraAbout > nomeAtual.length) {
-      apagandoAbout = true;
-      setTimeout(digitarNomeAbout, pauseAbout);
-      return;
-    }
-  } else {
-    nomeElementoAbout.textContent = nomeAtual.slice(0, indiceLetraAbout--);
-    if (indiceLetraAbout < 0) {
-      apagandoAbout = false;
-      indiceNomeAbout = (indiceNomeAbout + 1) % nomesAbout.length;
-      indiceLetraAbout = 0;
-    }
-  }
-
-  setTimeout(digitarNomeAbout, apagandoAbout ? speedDeleteAbout : speedWriteAbout);
-}
-
-window.addEventListener("load", () => {
-  setTimeout(digitarNomeAbout, startDelayAbout);
-});
-
 //Formulário
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('contactForm');
@@ -215,73 +175,6 @@ nextBtn.addEventListener('click', (e) => {
     currentIndex = (currentIndex + 1) % images.length;
     showImage(currentIndex);
 });
-
-// Carrossel de Projetos
-const projetos = [
-    {
-        id: "01",
-        titulo: 'Sales Forecasting<br>Algorithm “ITAMIND”',
-        descricao: 'This project solves the problem of wasted frozen products, such as chicken wings, in supermarkets. It uses an algorithm that predicts sales demand. The goal is to help determine the quantity and timing of thawing, ensuring they are sold within two days and thus avoiding losses due to excess stock or expiration dates.',
-        link: 'https://github.com/eliascmendes/ItaMind',
-        imagem: './assets/images/projects/dev/itamind.png',
-        softwares: ['CSS', 'HTML 5']
-    },
-    {
-        id: "02",
-        titulo: 'The Secret<br>Number Game',
-        descricao: 'The "Secret Number" project is a guessing game developed with HTML, CSS, and JavaScript. The logic generates a random number between 1 and 100, and the player must discover what it is. With each attempt, the system provides hints to guide the user. This project is ideal for practicing concepts of DOM manipulation, flow control, and functions in JavaScript.',
-        link: 'https://github.com/EryckTorres/numero-secreto',
-        imagem: './assets/images/projects/dev/numero_secreto.png',
-        softwares: ['JavaScript', 'HTML 5', 'CSS']
-    }
-];
-
-let indiceAtual = 0;
-
-const projetosContainer = document.querySelector(".projects-dev");
-const imgDemoContainer = projetosContainer.querySelector(".projects-dev-demo");
-const imgDemo = imgDemoContainer.querySelector("img"); // agora pegamos a imagem diretamente
-const titulo = projetosContainer.querySelector(".projects-dev-title");
-const subtitulo = projetosContainer.querySelector(".projects-dev-subtitle");
-const descricao = projetosContainer.querySelector(".textblock");
-const link = projetosContainer.querySelector(".bt-link");
-const textContainer = projetosContainer.querySelector(".projects-dev-text");
-const softwaresContainer = projetosContainer.querySelector(".dev-softwares");
-
-function atualizarProjeto(direcao) {
-    const slideOutClass = direcao === "left" ? "slide-out-left" : "slide-out-right";
-
-    imgDemoContainer.classList.add(slideOutClass);
-    textContainer.classList.add(slideOutClass);
-
-    setTimeout(() => {
-        const projeto = projetos[indiceAtual];
-
-        titulo.innerHTML = projeto.id;
-        subtitulo.innerHTML = projeto.titulo;
-        softwaresContainer.innerHTML = projeto.softwares
-            .map(soft => `<h4>${soft}</h4>`)
-            .join('');
-        descricao.textContent = projeto.descricao;
-        link.parentElement.href = projeto.link;
-        imgDemo.src = projeto.imagem; // agora alteramos diretamente o src da imagem
-
-        imgDemoContainer.classList.remove(slideOutClass);
-        textContainer.classList.remove(slideOutClass);
-    }, 400);
-}
-
-document.querySelectorAll(".bt-seta")[0].addEventListener("click", () => {
-    indiceAtual = (indiceAtual - 1 + projetos.length) % projetos.length;
-    atualizarProjeto("left");
-});
-
-document.querySelectorAll(".bt-seta")[1].addEventListener("click", () => {
-    indiceAtual = (indiceAtual + 1) % projetos.length;
-    atualizarProjeto("right");
-});
-
-atualizarProjeto();
 
 // Carrossel de projetos de design
 const projetosDesign = [

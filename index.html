@@ -71,7 +71,7 @@
                     <!-- Caminho para o texto ao redor -->
                     <path id="textPath" d="M325,50 a275,275 0 1,1 -0.1,0" fill="none" />
 
-                    <text class="text borda-texto">
+                    <text class="text borda-texto" id="about-circle">
                         <textPath href="#textPath" startOffset="0%">
                             ABOUT ME • ABOUT ME • ABOUT ME • ABOUT ME • ABOUT ME • ABOUT ME • ABOUT ME • 
                         </textPath>
@@ -80,8 +80,11 @@
             </div>
 
             <div class="about-text">
-                <h1 id="about-title" class="about-titulo">Hello,<br>I'm <span class="about-nome">Eryck</span>!</h1>
-                <p class="textblock">I'm a Design student at the Federal University of Maranhão (UFMA), focusing on <strong>front-end and UX design.</strong> My goal is to combine the aesthetics of design with the functionality of technology, creating intuitive and visually appealing digital experiences. I'm also passionate about <strong>digital illustration and branding,</strong> as I believe these fields allow me to express my creativity while effectively solving communication and visual identity problems. My portfolio reflects this enthusiasm, where I seek to apply my passion and skills to develop innovative and impactful projects.</p>
+                <h1 id="about-title" class="about-titulo">
+                    <span class="about-prefix">Hello,<br>I'm </span>
+                    <span class="about-nome">Eryck</span>!
+                </h1>
+                <p class="textblock" id="aboutTextblock">I'm a Design student at the Federal University of Maranhão (UFMA), focusing on <strong>front-end and UX design.</strong> My goal is to combine the aesthetics of design with the functionality of technology, creating intuitive and visually appealing digital experiences. I'm also passionate about <strong>digital illustration and branding,</strong> as I believe these fields allow me to express my creativity while effectively solving communication and visual identity problems. My portfolio reflects this enthusiasm, where I seek to apply my passion and skills to develop innovative and impactful projects.</p>
 
                 <a class="download-cv" href="./assets/docs/Eryck_Torres_CV.pdf" download>Download CV <img src="./assets/images/icons/file-down.svg"></a>
    
