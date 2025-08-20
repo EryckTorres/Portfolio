@@ -223,6 +223,17 @@
     font-weight: 300;
 }
 
+@media (max-width: 768px){
+    .header {
+        top: 2%;
+    }
+
+    .flag-selector{
+        top: 2%;
+        left: 4%;
+    }
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -230,6 +241,8 @@ html {
 #home {
     scroll-margin-top: 12.5rem; 
 }
+
+/* Section da home */
 
 .titulo {
     display: flex;
