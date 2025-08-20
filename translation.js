@@ -50,7 +50,7 @@ const projetos = [
     id: "01",
     titulo: {
       en: 'Sales Forecasting<br>Algorithm “ITAMIND”',
-      pt: 'Algoritmo de Previsão de Vendas<br>“ITAMIND”',
+      pt: 'Algoritmo de Previsão de Vendas “ITAMIND”',
       es: 'Algoritmo de Pronóstico de Ventas<br>“ITAMIND”',
       fr: 'Algorithme de Prévision des Ventes<br>“ITAMIND”'
     },
