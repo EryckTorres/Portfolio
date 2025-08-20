@@ -246,6 +246,11 @@ html {
     flex-direction: column;
 }
 
+.titulo-lines-lines{
+    display: flex;
+    flex-direction: column;
+}
+
 
 .titulo-nome {
     color: var(--branco);
@@ -297,6 +302,7 @@ html {
 }
 
 .titulo-icons-img{
+    width: 32px; height: 32px;
     transition: transform 0.2s ease-in-out;
 }
 
@@ -315,6 +321,55 @@ html {
     position: absolute;
     width: 58%;
 }
+
+@media (max-width: 768px){
+    .titulo{
+        flex-direction: column;
+        margin-top: 25%;
+    }
+    
+    .titulo-lines-lines{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 18rem;
+    }
+
+    .titulo-nome {
+        font-size: 1.5rem;
+        line-height: 1.3rem;
+        padding-bottom: 1rem;
+    }
+
+    .subtitulo {
+        font-size: 0.8rem;
+        padding-bottom: 1rem;
+        margin-right: 7%;
+    }
+
+    .titulo-main {
+        font-size: 6rem;
+        line-height: 5rem;
+        padding-bottom: 0.3rem;
+    }
+
+    .subtitulo-main {
+        font-size: 1rem;
+        padding-right: 0.125rem;
+    }
+
+    .titulo-icons {
+        width: 8.0625rem;
+    }
+
+    .titulo-container-2 img{
+        top: 20%;
+        left: 8%;
+        width: 90%;
+    }
+}
+
+/* Carrossel 1 */
 
 .carrousel-divisory {
     width: 100%;
@@ -347,6 +402,8 @@ html {
     100% {transform: translateX(-100%);}
 }
 
+/* Section About Me */
+
 .about{
     padding-top: 4.375rem;
     display: flex;
@@ -357,6 +414,12 @@ html {
     width: 40.625rem;
     height: 40.625rem;
     position: relative;
+    align-items: center;
+}
+
+.container svg{
+    width: 650px;
+    height: 650px;
 }
 
 .text {
@@ -441,6 +504,49 @@ html {
 .download-cv:hover img {
     filter: none;
 }
+
+@media (max-width: 768px){
+    .about{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container{
+        margin-left: 0px;
+        width: 23rem;
+        height: 23rem;
+    }
+
+    .container svg{
+        width: 23rem;
+        height: 23rem;
+    }
+
+    .about-titulo{
+        font-size: 2.5rem;  /* reduz título */
+        line-height: 2.8rem;
+        padding-bottom: 1.2rem;
+        padding-top: 2rem;
+    }
+
+    .textblock{
+        font-size: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .download-cv {
+        width: 10rem;
+        height: 2.5rem;
+        font-size: 0.9rem;
+    }
+
+    .download-cv img {
+        height: 1rem;
+        padding-left: 0.4rem;
+    }
+}
+
+/* Section de Skills */
 
 .skills{
     margin-top: 7%;

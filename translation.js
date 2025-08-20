@@ -154,7 +154,7 @@ const i18nHeader = {
 const translations = { 
   en: {
     portfolio: "PORT<br>FOLIO",
-    about: "Hello,<br>I'm ",
+    about: "Hello, I'm<br>",
     aboutCircle: "ABOUT ME • ABOUT ME • ABOUT ME • ABOUT ME • ABOUT ME • ABOUT ME • ABOUT ME • ",
     aboutTextblock: `I'm a Design student at the Federal University of Maranhão (UFMA), focusing on <strong>front-end and UX design.</strong> My goal is to combine the aesthetics of design with the functionality of technology, creating intuitive and visually appealing digital experiences. I'm also passionate about <strong>digital illustration and branding,</strong> as I believe these fields allow me to express my creativity while effectively solving communication and visual identity problems. My portfolio reflects this enthusiasm, where I seek to apply my passion and skills to develop innovative and impactful projects.`,
     skillsTitle: "My Skills",
@@ -170,7 +170,7 @@ const translations = {
   },
   pt: {
     portfolio: "PORT<br>FÓLIO",
-    about: "Olá, eu sou<br>o ",
+    about: "Olá, eu sou o<br>",
     aboutCircle: "SOBRE MIM • SOBRE MIM • SOBRE MIM • SOBRE MIM • SOBRE MIM • SOBRE MIM • SBR • ",
     aboutTextblock: `Sou estudante de Design na Universidade Federal do Maranhão (UFMA), com foco em <strong>front-end e design de UX.</strong> Meu objetivo é unir a estética do design com a funcionalidade da tecnologia, criando experiências digitais intuitivas e visualmente atraentes. Também sou apaixonado por <strong>ilustração digital e branding,</strong> pois acredito que essas áreas me permitem expressar minha criatividade ao mesmo tempo em que soluciono problemas de comunicação e identidade visual. Meu portfólio reflete esse entusiasmo, onde busco aplicar minha paixão e habilidades para desenvolver projetos inovadores e de impacto.`,
     skillsTitle: "Habilidades",
