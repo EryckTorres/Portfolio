@@ -119,7 +119,7 @@ function atualizarProjeto(direcao, lang = "en") {
   }, 400);
 }
 
-document.querySelectorAll(".bt-seta").forEach((seta) => {
+document.querySelectorAll(".dev").forEach((seta) => {
   seta.addEventListener("click", () => {
     const mainFlag = document.querySelector(".main-flag");
     const lang = langByAlt[mainFlag?.alt] || "en";

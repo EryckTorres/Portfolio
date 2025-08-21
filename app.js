@@ -345,14 +345,18 @@ function atualizarGrid(direcao) {
     }, 400);
 }
 
-document.getElementById("prev-project").addEventListener("click", () => {
+document.querySelectorAll(".prev-project").forEach(btn => {
+  btn.addEventListener("click", () => {
     indiceDesignAtual = (indiceDesignAtual - 1 + projetosDesign.length) % projetosDesign.length;
-    atualizarGrid('left');
+    atualizarGrid("left");
+  });
 });
 
-document.getElementById("next-project").addEventListener("click", () => {
+document.querySelectorAll(".next-project").forEach(btn => {
+  btn.addEventListener("click", () => {
     indiceDesignAtual = (indiceDesignAtual + 1) % projetosDesign.length;
-    atualizarGrid('right');
+    atualizarGrid("right");
+  });
 });
 
 const primeiroProjeto = projetosDesign[indiceDesignAtual];
