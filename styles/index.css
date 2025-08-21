@@ -57,6 +57,22 @@
     text-shadow: var(--borda-texto-preto2);
 }
 
+::-webkit-scrollbar {
+  width: 10px;            /* largura da barra lateral */
+  height: 10px;           /* altura da barra inferior (se tiver) */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--branco);   /* fundo */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--preto);  /* pill dentro */
+  border-radius: 9999px;      /* deixa arredondado */
+  border: 2px solid var(--branco); /* espaço entre pill e track */
+}
+
+
 .body {
     background-color: var(--branco);
 }
