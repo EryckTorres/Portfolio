@@ -43,6 +43,15 @@ window.addEventListener('scroll', function() {
     }
 });
 
+// Menu Hamburguer
+const menuToggle = document.getElementById("menu-toggle");
+const nav = document.getElementById("nav");
+
+menuToggle.addEventListener("click", () => {
+  menuToggle.classList.toggle("active");
+  nav.classList.toggle("active");
+});
+
 //Efeito Typewriter
 const textos = ["DESIGNER", "DEVELOPER", "ILLUSTRATOR"];
 const elemento = document.querySelector(".subtitulo-main");

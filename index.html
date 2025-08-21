@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles/index.css"/>
     <script defer src="./app.js"></script>
     <script defer src="./translation.js"></script>
+    <script defer src="./mobile-navbar.js"></script>
     <script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
 </head>
 
@@ -24,6 +25,12 @@
         <div class="flag-selector">
             <img src="./assets/images/flags/US_FLAG.png" alt="English" class="main-flag" />
             <div class="options"></div>
+        </div>
+
+        <div class="mobile-menu" id="menu-toggle">
+            <span class="line1"></span>
+            <span class="line2"></span>
+            <span class="line3"></span>
         </div>
 
         <nav class="nav">
@@ -174,7 +181,7 @@
                     <div class="projects-project-container">
                         <div class="projects-dev-demo"><img src="./assets/images/projects/dev/itamind.png"></div>
 
-                        <div class="projects-dev-responsive-arrows">
+                        <div class="projects-responsive-arrows">
                             <img src="./assets/images/icons/seta-esquerda.png" class="bt-seta hidden">
                             <img src="./assets/images/icons/seta-direita.png" class="bt-seta hidden">
                         </div>
@@ -207,7 +214,7 @@
 
                 <div class="projects-design">
 
-                    <img src="./assets/images/icons/seta-esquerda.png" class="bt-seta" id="prev-project">
+                    <img src="./assets/images/icons/seta-esquerda.png" class="bt-seta unhidden" id="prev-project">
 
                     <div class="grid-container">
 
@@ -267,7 +274,12 @@
                     </div>
                     
 
-                    <img src="./assets/images/icons/seta-direita.png" class="bt-seta" id="next-project">
+                    <img src="./assets/images/icons/seta-direita.png" class="bt-seta unhidden" id="next-project">
+
+                    <div class="projects-responsive-arrows">
+                            <img src="./assets/images/icons/seta-esquerda.png" class="bt-seta hidden" id="prev-project">
+                            <img src="./assets/images/icons/seta-direita.png" class="bt-seta hidden" id="next-project">
+                    </div>
 
                 </div>
 
@@ -324,7 +336,7 @@
         <section id="contact" class="contact">
             <div class="contact-content">
                 <h1 class="borda-texto-branco contact-title">Ring a bell!</h1>
-                <p class="textblock-alt">Ready for the next challenge! Get in touch to discuss<br>how we can bring together design and technology in your project.</p>
+                <p class="textblock-alt">Ready for the next challenge! Get in touch to discuss how we can bring together design and technology in your project.</p>
 
                 <form action="https://formspree.io/f/xdkdjyqp" method="post" class="contact-form" id="contactForm">
                     <input type="text" name="name" placeholder="Name" required>
@@ -334,12 +346,12 @@
                         <button class="flex" type="submit">Send</button>
                         <button type="button">
                             <a target="_blank" href="https://www.linkedin.com/in/erycktorres">
-                                <img src="./assets/images/icons/linkedin.svg" width="32px">
+                                <img src="./assets/images/icons/linkedin.svg">
                             </a>
                         </button>
                         <button type="button">
                             <a target="_blank" href="https://wa.link/87tp2i">
-                                <img src="./assets/images/icons/whatsapp.svg" width="32px">
+                                <img src="./assets/images/icons/whatsapp.svg">
                             </a>
                         </button>
                     </div>
