@@ -248,6 +248,7 @@ html {
     display: flex;
     flex-direction: row;
     margin-top: 13%;
+    position: relative; /* referência para o absoluto */
 }
 
 .titulo-container-1{
@@ -263,7 +264,6 @@ html {
     display: flex;
     flex-direction: column;
 }
-
 
 .titulo-nome {
     color: var(--branco);
@@ -288,6 +288,8 @@ html {
     font-size: 9.375rem;
     line-height: 8.125rem;
     color: var(--preto);
+    position: relative;
+    z-index: 1;  /* sempre abaixo do desenho */
 }
 
 .subtitulo-main {
@@ -323,13 +325,18 @@ html {
     transform: scale(1.2);
 }
 
-.titulo-container-2 {
-    margin-right: 7%;
+.titulo-container-2 img {
+    position: absolute;
+    top: 20%;    /* controla o quanto invade */
+    left: 8%;    /* ajusta horizontal */
+    width: 90%;
+    z-index: 3;  /* sempre por cima */
+    pointer-events: none; /* impede de bloquear clique no texto */
 }
 
 .titulo-container-2 img{
     z-index: 2;
-    top: 15%;
+    top: -15%;
     left: 40%;
     position: absolute;
     width: 58%;
@@ -375,10 +382,10 @@ html {
         width: 8.0625rem;
     }
 
-    .titulo-container-2 img{
-        top: 20%;
-        left: 8%;
-        width: 90%;
+    .titulo-container-2 img {
+        top: 11%;   /* aumenta a invasão */
+        left: 5%;
+        width: 95%;
     }
 }
 
@@ -563,13 +570,15 @@ html {
 
 .skills{
     margin-top: 7%;
-    height: 53.125rem;
+    height: fit-content;
     background-color: var(--preto);
+    padding-bottom: 5rem;
 }
 
 .skills-title{
     padding-top: 8%;
     margin-left: 7%;
+    margin-right: 7%;
     font-family: var(--fonte-destaque);
     font-weight: 900;
     font-size: 4.5rem;
@@ -587,6 +596,7 @@ html {
 .skills-container div {
     flex: 0 0 calc(20% - 3rem);
     height: 12.5rem;
+    min-width: 8rem;
     border-radius: 1.25rem;
     border: 0.1875rem solid var(--branco);
     background-color: var(--preto);
@@ -607,6 +617,7 @@ html {
 }
 
 .skills-container-content img {
+    height: 110px;
     transition: filter 0.3s ease-in-out;
 }
 
@@ -660,6 +671,49 @@ html {
     transform: scaleY(-1);
 }
 
+@media (max-width: 768px) {
+    .skills-title {
+        font-size: 3rem;
+        text-align: center;
+        padding: 10% 0%;
+    }
+
+    .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+        gap: 1rem;
+        justify-content: center;
+        width: min(92vw, 900px);
+        margin-inline: auto;
+        padding-inline: 1rem;
+        box-sizing: border-box;
+    }
+
+    .skills-container div {
+        border-radius: 0.5rem;
+        min-width: 0;        
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+    }
+
+    .skills-container-content {
+        padding: 7%;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .skills-container-content img {
+        height: 4rem;
+    }
+
+    .skills-container > div:last-child:nth-child(3n + 1) {
+        grid-column: 2;
+    }
+}
+
+/* Section de projetos dev */
+
 .projects{
     padding-top: 6.875rem;
     margin-left: 7%;
@@ -685,6 +739,12 @@ html {
     padding-bottom: 3.125rem;
 }
 
+.projects-project-container{
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+
 .projects-dev{
     display: flex;
     flex-direction: row;
@@ -693,6 +753,7 @@ html {
     justify-content: center;
     padding-bottom: 10%;
 }
+
 
 .projects-dev-demo{
     border-radius: 0.625rem;
@@ -708,6 +769,10 @@ html {
 
 .projects-dev-demo:hover{
     transform: scale(1.02);
+}
+
+.hidden{
+    display: none;
 }
 
 .projects-dev-text{
@@ -786,6 +851,111 @@ html {
     opacity: 0;
     transform: translateX(3.125rem);
 }
+
+@media (max-width: 768px){
+    .projects{
+        padding-top: 4rem;
+    }
+
+    .projects-project-container{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .projects-title{
+        font-size: 2.5rem;
+        letter-spacing: 0.8rem;
+        text-align: center;
+        padding-bottom: 3rem;
+    }
+
+    .projects-area{
+        font-size: 1rem;
+        padding-bottom: 3.125rem;
+    }
+
+    .projects-dev {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .projects-dev-responsive-number{
+        display: flex;
+        margin-left: 10%;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .projects-dev-responsive-number img{
+        height: 1.5rem;
+    }
+
+    .projects-dev-demo{
+        display: flex;
+        justify-content: center;
+        padding-bottom: 0%;
+    }
+
+    .projects-dev-demo img{
+        border-radius: 0.5rem;
+        width: 20.5rem;
+        height: 19.25rem;
+    }
+
+    .projects-dev-responsive-arrows{
+        display: flex;
+        gap: 3rem;
+        justify-content: center;
+    }
+
+    .alt{
+        max-width: 90%;
+        font-size: 0.8rem;
+    }
+
+    .hidden{
+        display: flex;
+    }
+
+    .unhidden{
+        display: none;
+    }
+
+    .projects-dev-text{
+        flex-direction: row;
+    }
+
+    .projects-dev-text-container{
+        padding: 0 5%;
+        flex-direction: column;
+    }
+
+    .projects-dev-title{
+        font-size: 3rem;
+        padding-bottom: 0.2rem;
+    }
+
+    .projects-dev-subtitle{
+        font-size: 1.1rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .dev-softwares{
+        display: flex;
+        gap: 0.625rem;
+        padding-bottom: 0.625rem;
+    }
+
+    .dev-softwares h4{
+        font-size: 0.5rem;
+        padding: 0.3rem 0.8rem 0.3rem 0.8rem;
+        width: auto;
+        border-radius: 3.125rem;
+    }
+}
+
+/* Section de projetos de design */
 
 .projects-design{
     padding-top: 1%;

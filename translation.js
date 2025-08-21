@@ -119,18 +119,19 @@ function atualizarProjeto(direcao, lang = "en") {
   }, 400);
 }
 
-document.querySelectorAll(".bt-seta")[0].addEventListener("click", () => {
-  indiceAtual = (indiceAtual - 1 + projetos.length) % projetos.length;
-  const mainFlag = document.querySelector(".main-flag");
-  const lang = langByAlt[mainFlag?.alt] || "en";
-  atualizarProjeto("left", lang);
-});
+document.querySelectorAll(".bt-seta").forEach((seta) => {
+  seta.addEventListener("click", () => {
+    const mainFlag = document.querySelector(".main-flag");
+    const lang = langByAlt[mainFlag?.alt] || "en";
 
-document.querySelectorAll(".bt-seta")[1].addEventListener("click", () => {
-  indiceAtual = (indiceAtual + 1) % projetos.length;
-  const mainFlag = document.querySelector(".main-flag");
-  const lang = langByAlt[mainFlag?.alt] || "en";
-  atualizarProjeto("right", lang);
+    if (seta.src.includes("seta-esquerda")) {
+      indiceAtual = (indiceAtual - 1 + projetos.length) % projetos.length;
+      atualizarProjeto("left", lang);
+    } else {
+      indiceAtual = (indiceAtual + 1) % projetos.length;
+      atualizarProjeto("right", lang);
+    }
+  });
 });
 
 atualizarProjeto();
