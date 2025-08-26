@@ -45,16 +45,26 @@
         0.1250rem 0.1250rem 0 var(--preto);
 }
 
+.bordinha{
+    -webkit-text-stroke: var(--preto);
+    -webkit-text-stroke-width: 0.15rem;
+    paint-order: stroke fill;
+}
+
 .borda-texto{
     text-shadow: var(--borda-texto);
 }
 
 .borda-texto-branco{
-    text-shadow: var(--borda-texto-branco);
+    -webkit-text-stroke: var(--branco);
+    -webkit-text-stroke-width: 0.2rem;
+    paint-order: stroke fill;
 }
 
 .borda-texto-preto2{
-    text-shadow: var(--borda-texto-preto2);
+    -webkit-text-stroke: var(--preto);
+    -webkit-text-stroke-width: 0.4rem;
+    paint-order: stroke fill;
 }
 
 ::-webkit-scrollbar {
@@ -601,6 +611,7 @@ html {
     height: 650px;
 }
 
+
 .text {
     fill: var(--branco);
     font-family: var(--fonte-principal);
@@ -608,6 +619,7 @@ html {
     font-size: 2.375rem;
     transform-origin: 50% 50%;
     animation: rotate 25s linear infinite;
+    
 }
 
 @keyframes rotate {
@@ -1473,7 +1485,7 @@ html {
     padding-top: 7%;
     margin-left: 7%;
     margin-right: 7%;
-    width: 40%;
+    width: 50%;
 }
 
 .contact-title{
@@ -1498,7 +1510,7 @@ html {
     display: flex;
     flex-direction: column;
     gap: 0.9375rem;
-    width: auto;
+    width: 80%;
     padding-bottom: 4.375rem;
 }
 
@@ -1582,6 +1594,10 @@ html {
     .textblock-alt{
         font-size: 1rem;
         text-align: center;
+    }
+
+    .contact-form {
+        width: auto;
     }
 
     .contact-form input,
