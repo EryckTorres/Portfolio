@@ -167,7 +167,13 @@ const translations = {
     placeholderEmail: "E-mail",
     placeholderMessage: "How can I help ya?",
     sendButton: "Send",
-    footerText: "© 2025 <strong>Eryck Torres.</strong> All rights reserved."
+    footerText: "© 2025 <strong>Eryck Torres.</strong> All rights reserved.",
+    formMessages: {
+      sending: "Sending...",
+      success: "Message sent successfully! I will contact you soon.",
+      error: "An error occurred while sending. Please try again.",
+      network: "There was a problem. Check your internet and try again."
+    }
   },
   pt: {
     portfolio: "PORT<br>FÓLIO",
@@ -183,7 +189,13 @@ const translations = {
     placeholderEmail: "E-mail",
     placeholderMessage: "Como posso te ajudar?",
     sendButton: "Enviar",
-    footerText: "© 2025 <strong>Eryck Torres.</strong> Todos os direitos reservados."
+    footerText: "© 2025 <strong>Eryck Torres.</strong> Todos os direitos reservados.",
+    formMessages: {
+      sending: "Enviando...",
+      success: "Mensagem enviada com sucesso! Em breve, entrarei em contato.",
+      error: "Ocorreu um erro no envio. Por favor, tente novamente.",
+      network: "Houve um problema com a conexão. Verifique sua internet e tente novamente."
+    }
   },
   es: {
     portfolio: "PORTA<br>FOLIO",
@@ -199,7 +211,13 @@ const translations = {
     placeholderEmail: "Correo electrónico",
     placeholderMessage: "¿Cómo puedo ayudarte?",
     sendButton: "Enviar",
-    footerText: "© 2025 <strong>Eryck Torres.</strong> Todos los derechos reservados."
+    footerText: "© 2025 <strong>Eryck Torres.</strong> Todos los derechos reservados.",
+    formMessages: {
+      sending: "Enviando...",
+      success: "¡Mensaje enviado con éxito! Te responderé pronto.",
+      error: "Ocurrió un error al enviar. Por favor, inténtalo de nuevo.",
+      network: "Hubo un problema con la conexión. Verifica tu internet e inténtalo nuevamente."
+    }
   },
   fr: {
     portfolio: "PORT<br>FOLIO",
@@ -215,7 +233,13 @@ const translations = {
     placeholderEmail: "E-mail",
     placeholderMessage: "Comment puis-je vous aider ?",
     sendButton: "Envoyer",
-    footerText: "© 2025 <strong>Eryck Torres.</strong> Tous droits réservés."
+    footerText: "© 2025 <strong>Eryck Torres.</strong> Tous droits réservés.",
+    formMessages: {
+      sending: "Envoi en cours...",
+      success: "Message envoyé avec succès ! Je vous contacterai bientôt.",
+      error: "Une erreur est survenue lors de l'envoi. Veuillez réessayer.",
+      network: "Un problème de connexion est survenu. Vérifiez votre internet et réessayez."
+    }
   }
 };
 
@@ -318,6 +342,31 @@ function updateFooter(lang) {
     }
 }
 
+function updateFormMessages(lang) {
+  const messageStatus = document.querySelector('.contact-content-img .message_status');
+  if (!messageStatus) return;
+
+  const msgs = translations[lang].formMessages;
+  const allMsgs = Object.values(translations).flatMap(t => Object.values(t.formMessages));
+
+  // só troca se a mensagem exibida for uma das conhecidas
+  const currentText = messageStatus.textContent.trim();
+  if (allMsgs.includes(currentText)) {
+    // detecta qual chave corresponde ao texto atual
+    const oldLang = Object.keys(translations).find(l =>
+      Object.values(translations[l].formMessages).includes(currentText)
+    );
+    if (oldLang) {
+      const key = Object.keys(translations[oldLang].formMessages).find(
+        k => translations[oldLang].formMessages[k] === currentText
+      );
+      if (key && msgs[key]) {
+        messageStatus.textContent = msgs[key];
+      }
+    }
+  }
+}
+
 // pega o idioma a partir da bandeira principal e traduz
 function applyHeaderByMainFlag() {
   const mainFlag = document.querySelector(".main-flag");
@@ -336,6 +385,7 @@ function applyHeaderByMainFlag() {
   updatePlaceholders(lang);
   updateSendButton(lang);
   updateFooter(lang);
+  updateFormMessages(lang);
 }
 
 // 1) traduz ao carregar
@@ -351,6 +401,108 @@ if (mainFlagEl) {
   });
   obs.observe(mainFlagEl, { attributes: true, attributeFilter: ["alt"] });
 }
+
+// Formulário
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contactForm');
+  const contactImg = document.querySelector('.contact-content-img img');
+  const messageStatus = document.querySelector('.contact-content-img .message_status');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    // detecta idioma atual
+    const mainFlag = document.querySelector(".main-flag");
+    const lang = langByAlt[mainFlag?.alt] || "en";
+    const msgs = translations[lang].formMessages;
+
+    messageStatus.textContent = msgs.sending;
+    messageStatus.style.color = 'var(--branco)';
+    contactImg.src = './assets/images/myBrand/contact_draw.png'; // enviando
+
+    const formAction = form.action;
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(formAction, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        messageStatus.textContent = msgs.success;
+        messageStatus.style.color = 'black';
+        contactImg.src = './assets/images/myBrand/contact_draw_send.png'; // sucesso
+        form.reset();
+      } else {
+        const responseData = await response.json();
+        if (responseData.errors) {
+          messageStatus.textContent = responseData.errors.map(error => error.message).join(", ");
+        } else {
+          messageStatus.textContent = msgs.error;
+        }
+        messageStatus.style.color = 'black';
+        contactImg.src = './assets/images/myBrand/contact_draw_send.png'; // erro
+      }
+    } catch (error) {
+      messageStatus.textContent = msgs.network;
+      messageStatus.style.color = 'black';
+      contactImg.src = './assets/images/myBrand/contact_draw_send.png'; // erro
+    }
+  });
+});
+
+// Formulário
+// document.addEventListener('DOMContentLoaded', () => {
+//     const form = document.getElementById('contactForm');
+//     const contactImg = document.querySelector('.contact-content-img img');
+//     const messageStatus = document.querySelector('.contact-content-img .message_status');
+
+//     form.addEventListener('submit', async (event) => {
+//         event.preventDefault();
+
+//         // detecta idioma atual
+//         const mainFlag = document.querySelector(".main-flag");
+//         const lang = langByAlt[mainFlag?.alt] || "en";
+//         const msgs = translations[lang].formMessages;
+
+//         messageStatus.textContent = msgs.sending;
+//         messageStatus.style.color = 'var(--branco)';
+//         contactImg.src = './assets/images/myBrand/contact_draw.png'; // enviando
+
+//         const formAction = form.action;
+//         const data = new FormData(form);
+
+//         try {
+//             const response = await fetch(formAction, {
+//                 method: form.method,
+//                 body: data,
+//                 headers: { 'Accept': 'application/json' }
+//             });
+
+//             if (response.ok) {
+//                 messageStatus.textContent = msgs.success;
+//                 messageStatus.style.color = 'black';
+//                 contactImg.src = './assets/images/myBrand/contact_draw_send.png'; // sucesso
+//                 form.reset();
+//             } else {
+//                 const responseData = await response.json();
+//                 if (responseData.errors) {
+//                     messageStatus.textContent = responseData.errors.map(error => error.message).join(", ");
+//                 } else {
+//                     messageStatus.textContent = msgs.error;
+//                 }
+//                 messageStatus.style.color = 'black';
+//                 contactImg.src = './assets/images/myBrand/contact_draw_send.png'; // erro
+//             }
+//         } catch (error) {
+//             messageStatus.textContent = msgs.network;
+//             messageStatus.style.color = 'black';
+//             contactImg.src = './assets/images/myBrand/contact_draw_send.png'; // erro
+//         }
+//     });
+// });
 
 //Typewriter About Me
 const nomesAbout = ["Eryck", "Kyukiew"];

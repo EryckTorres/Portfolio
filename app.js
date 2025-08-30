@@ -93,49 +93,6 @@ window.addEventListener("load", () => {
   setTimeout(digitar, startDelay);
 });
 
-//Formulário
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('contactForm');
-    const status = document.getElementById('form-status');
-
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        status.textContent = 'Enviando...';
-        status.style.color = 'var(--branco)';
-
-        const formAction = form.action;
-        const data = new FormData(form);
-
-        try {
-            // Usa a API 'fetch' para enviar os dados de forma assíncrona
-            const response = await fetch(formAction, {
-                method: form.method,
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (response.ok) {
-                status.textContent = 'Mensagem enviada com sucesso! Em breve, entrarei em contato.';
-                status.style.color = 'green';
-                form.reset();
-            } else {
-                const responseData = await response.json();
-                if (responseData.errors) {
-                    status.textContent = responseData.errors.map(error => error.message).join(", ");
-                } else {
-                    status.textContent = 'Ocorreu um erro no envio. Por favor, tente novamente.';
-                }
-                status.style.color = 'red';
-            }
-        } catch (error) {
-            status.textContent = 'Houve um problema com a conexão. Verifique sua internet e tente novamente.';
-            status.style.color = 'red';
-        }
-    });
-});
-
 // LightBox
 
 const images = document.querySelectorAll('.grid-container2 img');

@@ -910,7 +910,8 @@ html {
     font-family: var(--fonte-destaque);
     font-size: 6rem;
     font-weight: 900;
-    letter-spacing: 1.25rem;
+    letter-spacing: 1rem;
+    margin-right: -1rem;
     color: var(--branco);
     padding-bottom: 7.5rem;
 }
@@ -1492,6 +1493,7 @@ html {
 
 .contact{
     background-color: var(--preto);
+    display: flex;
 }
 
 .contact-content{
@@ -1499,6 +1501,26 @@ html {
     margin-left: 7%;
     margin-right: 7%;
     width: 50%;
+}
+
+.contact-content-img{
+    position: absolute;
+    scale: 0.85;
+    margin: 5% 7% 0% 47%;
+}
+
+.message_status{
+    position: absolute;
+    top: 8%;
+    left: 19%;
+    width: 160px;
+    height: 200px;
+
+    font-family: var(--fonte-destaque);
+    font-weight: 500;
+    color: var(--preto);
+    font-size: 22px;
+    text-align: center;
 }
 
 .contact-title{
@@ -1514,9 +1536,10 @@ html {
     font-family: var(--fonte-principal);
     font-weight: 200;
     color: var(--branco);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     opacity: 0.5;
-    padding-bottom: 2.375rem;
+    padding-bottom: 1.5rem;
+    width: 80%;
 }
 
 .contact-form {
@@ -1594,8 +1617,20 @@ html {
 }
 
 @media (max-width: 768px){
+    
+    .contact{
+        flex-direction: column;
+        align-items: center;
+    }
+
     .contact-content{
         width: auto;
+    }
+
+    .contact-content-img{
+        scale: 0.48;
+        position: relative;
+        margin: -50% 0% -35% 0%;
     }
 
     .contact-title{
@@ -1607,6 +1642,7 @@ html {
     .textblock-alt{
         font-size: 1rem;
         text-align: center;
+        width: 100%;
     }
 
     .contact-form {
